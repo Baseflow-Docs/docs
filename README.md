@@ -64,10 +64,6 @@ Baseflow supports these MDX components out of the box:
 | `<ResponseField>`                                     | API response documentation                 |
 | `<Expandable>`                                        | Collapsible property details               |
 
-## Image Placeholders
-
-This repo uses `<Frame>` components with descriptive text where screenshots need to be added. Search for `Screenshot needed:` to find all placeholders.
-
 ## License
 
 Copyright © 2026 Baseflow. All rights reserved.
