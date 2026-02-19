@@ -1,0 +1,123 @@
+---
+title: Callouts
+description: Highlighted message boxes for tips, warnings, info, success, and danger notices.
+---
+
+# Callouts
+
+Callouts draw attention to important information. Use them for tips, warnings, prerequisites, or any content that shouldn't be missed.
+
+## Types
+
+Baseflow supports five callout types:
+
+```mdx
+<Callout type="info">
+  This is an informational note with additional context.
+</Callout>
+
+<Callout type="tip">
+  A helpful suggestion to improve the reader's workflow.
+</Callout>
+
+<Callout type="warning">
+  Something to be careful about — potential issues ahead.
+</Callout>
+
+<Callout type="check">
+  A success message confirming something worked correctly.
+</Callout>
+
+<Callout type="danger">
+  A critical warning — this action is destructive or irreversible.
+</Callout>
+```
+
+<Callout type="info">
+  This is an informational note with additional context.
+</Callout>
+
+<Callout type="tip">
+  A helpful suggestion to improve the reader's workflow.
+</Callout>
+
+<Callout type="warning">
+  Something to be careful about — potential issues ahead.
+</Callout>
+
+<Callout type="check">
+  A success message confirming something worked correctly.
+</Callout>
+
+<Callout type="danger">
+  A critical warning — this action is destructive or irreversible.
+</Callout>
+
+## Props
+
+| Prop   | Type     | Default  | Description                                                    |
+| ------ | -------- | -------- | -------------------------------------------------------------- |
+| `type` | `string` | `"info"` | Callout style: `info`, `tip`, `warning`, `check`, or `danger`. |
+
+## Shorthand Aliases
+
+Each callout type has a dedicated component alias for convenience:
+
+```mdx
+<Note>Same as `Callout type="info"`.</Note>
+<Tip>Same as `Callout type="tip"`.</Tip>
+<Warning>Same as `Callout type="warning"`.</Warning>
+<Check>Same as `Callout type="check"`.</Check>
+<Danger>Same as `Callout type="danger"`.</Danger>
+```
+
+<Note>Same as `Callout type="info"`.</Note>
+<Tip>Same as `Callout type="tip"`.</Tip>
+<Warning>Same as `Callout type="warning"`.</Warning>
+<Check>Same as `Callout type="check"`.</Check>
+<Danger>Same as `Callout type="danger"`.</Danger>
+
+## Rich Content
+
+Callouts support full Markdown — bold, code, links, and lists:
+
+```mdx
+<Callout type="warning">
+  **Breaking change in v2.0:** The `config` field has been renamed to `settings`.
+
+Update your `docs.json`:
+
+- Change `config` → `settings`
+- Run `npm run validate` to verify
+
+See the [migration guide](/advanced/versioning) for details.
+
+</Callout>
+```
+
+<Callout type="warning">
+  **Breaking change in v2.0:** The `config` field has been renamed to `settings`.
+
+Update your `docs.json`:
+
+- Change `config` → `settings`
+- Run `npm run validate` to verify
+
+See the [migration guide](/advanced/versioning) for details.
+
+</Callout>
+
+## When to Use Each Type
+
+| Type      | Use for                                                     |
+| --------- | ----------------------------------------------------------- |
+| `info`    | Additional context, background information, notes           |
+| `tip`     | Best practices, shortcuts, helpful suggestions              |
+| `warning` | Potential pitfalls, deprecations, things to watch out for   |
+| `check`   | Success confirmation, completed steps, positive outcomes    |
+| `danger`  | Destructive actions, irreversible operations, critical bugs |
+
+<Callout type="tip">
+  Use callouts sparingly. If every paragraph has a callout, none of them stand
+  out. Reserve them for information that genuinely needs special attention.
+</Callout>

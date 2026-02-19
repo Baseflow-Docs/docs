@@ -1,0 +1,101 @@
+---
+title: Frontmatter
+description: Add metadata to your docs pages using YAML frontmatter.
+---
+
+# Frontmatter
+
+Frontmatter is a YAML block at the top of each MDX file. It sets the page title, description, and other metadata that Baseflow uses for rendering and SEO.
+
+## Basic Frontmatter
+
+Every page should include at least `title` and `description`:
+
+```mdx
+---
+title: Getting Started
+description: Learn how to set up your first Baseflow project.
+---
+
+# Getting Started
+
+Your page content starts here.
+```
+
+## Available Fields
+
+| Field          | Type     | Description                                                              |
+| -------------- | -------- | ------------------------------------------------------------------------ |
+| `title`        | `string` | Page title. Displayed in the browser tab, sidebar, and navigation links. |
+| `description`  | `string` | Short summary. Used in SEO meta tags and search results.                 |
+| `icon`         | `string` | Icon name to display next to the page title in the sidebar.              |
+| `sidebarTitle` | `string` | Override the title shown in the sidebar (useful for shorter labels).     |
+
+## Title and Description
+
+The `title` field is required. It's used:
+
+- As the `<title>` tag in the rendered HTML
+- As the default heading if the page body doesn't start with an `# H1`
+- In the sidebar navigation
+- In Open Graph / social sharing previews
+
+The `description` field is strongly recommended for SEO:
+
+```yaml
+---
+title: API Authentication
+description: Learn how to authenticate requests to the API using bearer tokens.
+---
+```
+
+## Sidebar Customization
+
+If a title is too long for the sidebar, use `sidebarTitle` to set a shorter version:
+
+```yaml
+---
+title: Configuring Single Sign-On with SAML 2.0
+sidebarTitle: SAML SSO
+---
+```
+
+## Icons
+
+Add an icon next to the page title in the sidebar:
+
+```yaml
+---
+title: Quickstart
+icon: rocket
+---
+```
+
+<Callout type="tip">
+  Baseflow supports a wide range of icon names. Use short, descriptive names
+  like `rocket`, `code`, `book`, `star`, `settings`, etc.
+</Callout>
+
+## Example
+
+Here's a complete frontmatter block using all available fields:
+
+```yaml
+---
+title: Deploying to Production
+description: Step-by-step guide for deploying your documentation site to a custom domain.
+sidebarTitle: Deploy
+icon: globe
+---
+```
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Code Blocks" icon="terminal" href="/writing-content/code-blocks">
+    Add syntax-highlighted code samples to your pages.
+  </Card>
+  <Card title="docs.json" icon="settings" href="/project-structure/docs-json">
+    Configure site-wide settings in your project config.
+  </Card>
+</CardGroup>

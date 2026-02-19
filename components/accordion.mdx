@@ -1,0 +1,133 @@
+---
+title: Accordion
+description: Expandable sections for FAQs, supplementary details, and collapsible content.
+---
+
+# Accordion
+
+Accordions let you hide content behind a clickable header. Readers expand sections on demand, keeping pages clean while still providing detailed information.
+
+## Basic Accordion
+
+```mdx
+<Accordion title="What file format does Baseflow use?">
+  Baseflow uses **MDX** — Markdown extended with JSX components. Standard `.mdx`
+  files with optional YAML frontmatter.
+</Accordion>
+```
+
+<Accordion title="What file format does Baseflow use?">
+  Baseflow uses **MDX** — Markdown extended with JSX components. Standard `.mdx`
+  files with optional YAML frontmatter.
+</Accordion>
+
+### Props
+
+| Prop    | Type     | Description                              |
+| ------- | -------- | ---------------------------------------- |
+| `title` | `string` | **Required.** The clickable header text. |
+
+## Accordion Group
+
+Use `AccordionGroup` to display multiple accordions together, such as on an FAQ page:
+
+```mdx
+<AccordionGroup>
+  <Accordion title="Is Baseflow free?">
+    Baseflow offers a free Starter plan with up to 3 projects. Paid plans start
+    at $29/month for unlimited projects and additional features.
+  </Accordion>
+  <Accordion title="Can I use my own domain?">
+    Yes. Custom domains are available on the Pro plan and above. Connect your
+    domain from **Project Settings → Domains**.
+  </Accordion>
+  <Accordion title="Does Baseflow require a build step?">
+    No. Changes go live instantly — no CI pipeline or build process required.
+  </Accordion>
+  <Accordion title="Can non-technical team members edit docs?">
+    Absolutely. The visual editor lets anyone write and publish docs in the
+    browser without touching Git or code.
+  </Accordion>
+</AccordionGroup>
+```
+
+<AccordionGroup>
+  <Accordion title="Is Baseflow free?">
+    Baseflow offers a free Starter plan with up to 3 projects. Paid plans start
+    at $29/month for unlimited projects and additional features.
+  </Accordion>
+  <Accordion title="Can I use my own domain?">
+    Yes. Custom domains are available on the Pro plan and above. Connect your
+    domain from **Project Settings → Domains**.
+  </Accordion>
+  <Accordion title="Does Baseflow require a build step?">
+    No. Changes go live instantly — no CI pipeline or build process required.
+  </Accordion>
+  <Accordion title="Can non-technical team members edit docs?">
+    Absolutely. The visual editor lets anyone write and publish docs in the
+    browser without touching Git or code.
+  </Accordion>
+</AccordionGroup>
+
+### AccordionGroup Props
+
+| Prop | Type | Description                                                                  |
+| ---- | ---- | ---------------------------------------------------------------------------- |
+| —    | —    | Container for multiple `Accordion` components. No additional props required. |
+
+## Rich Content Inside Accordions
+
+Accordions accept any Markdown or MDX content as children:
+
+````mdx
+<Accordion title="Configuration example">
+  Here's a complete `docs.json` configuration:
+
+```json
+{
+  "name": "My Docs",
+  "navigation": [
+    {
+      "group": "Guides",
+      "pages": ["quickstart", "configuration"]
+    }
+  ]
+}
+```
+````
+
+  <Callout type="tip">
+    See the [docs.json reference](/project-structure/docs-json) for all available fields.
+  </Callout>
+</Accordion>
+```
+
+<Accordion title="Configuration example">
+  Here's a complete `docs.json` configuration:
+
+```json
+{
+  "name": "My Docs",
+  "navigation": [
+    {
+      "group": "Guides",
+      "pages": ["quickstart", "configuration"]
+    }
+  ]
+}
+```
+
+  <Callout type="tip">
+    See the [docs.json reference](/project-structure/docs-json) for all available fields.
+  </Callout>
+</Accordion>
+
+## When to Use Accordions
+
+| Scenario                       | Use Accordion?                           |
+| ------------------------------ | ---------------------------------------- |
+| FAQ pages                      | ✓                                        |
+| Optional/supplementary details | ✓                                        |
+| Long reference tables          | ✓                                        |
+| Core tutorial steps            | ✗ Use [Steps](/components/steps) instead |
+| Content readers must see       | ✗ Keep visible                           |

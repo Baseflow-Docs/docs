@@ -1,0 +1,149 @@
+---
+title: AI Features
+description: AI-powered writing assistance, search, and content generation for your documentation.
+---
+
+# AI Features
+
+Baseflow integrates AI capabilities to help you write better documentation faster. From drafting new pages to answering reader questions, AI works alongside your team to improve the documentation experience.
+
+<Callout type="info">
+  AI features are available on the **AI plan** ($59/month) and above.
+</Callout>
+
+## AI Writing Assistant
+
+The AI writing assistant helps authors create and improve documentation directly in the visual editor.
+
+### Drafting new content
+
+Start with a topic and let AI generate a first draft:
+
+<Frame caption="AI generating a first draft from a prompt">
+  Screenshot needed: The visual editor showing an AI prompt dialog where the
+  user types "Write a guide for setting up webhooks" and the AI generates a
+  structured draft below.
+</Frame>
+
+<Steps>
+  <Step title="Open the AI assistant">
+    In the visual editor, click the **AI** button in the toolbar or use the
+    keyboard shortcut.
+  </Step>
+  <Step title="Describe what you need">
+    Enter a prompt like "Write a quickstart guide for the webhooks API" or
+    "Explain how to authenticate with OAuth 2.0."
+  </Step>
+  <Step title="Review and edit">
+    The AI generates a draft with proper MDX formatting — headings, code blocks,
+    callouts, and more. Review the output and edit as needed.
+  </Step>
+</Steps>
+
+### Improving existing content
+
+Select text on any page and use AI to:
+
+- **Simplify** — rewrite technical content in plainer language
+- **Expand** — add more detail to a brief section
+- **Summarize** — condense a long section into key points
+- **Fix** — correct grammar, spelling, and phrasing
+
+<Frame caption="AI improving selected text">
+  Screenshot needed: The visual editor with text selected and an AI context menu
+  showing options: Simplify, Expand, Summarize, Fix Grammar.
+</Frame>
+
+### Generating components
+
+Ask the AI to create structured content with components:
+
+- "Create a 3-step guide for deploying to production"
+- "Add a FAQ section with 5 common questions about pricing"
+- "Generate a comparison table of our API plans"
+
+The AI outputs valid MDX with the appropriate Baseflow components (`Steps`, `AccordionGroup`, tables, etc.).
+
+## AI Search
+
+AI-powered search lets readers ask natural-language questions and get direct answers from your documentation.
+
+<Frame caption="AI search answering a reader's question">
+  Screenshot needed: The docs search interface showing a user question "How do I
+  connect my GitHub repo?" and an AI-generated answer with a link to the
+  relevant page.
+</Frame>
+
+### How it works
+
+1. A reader types a question in the search bar
+2. AI searches across all your documentation pages
+3. A direct answer is generated from relevant content
+4. Source pages are linked for readers who want more detail
+
+### Benefits over traditional search
+
+| Feature              | Traditional Search     | AI Search                    |
+| -------------------- | ---------------------- | ---------------------------- |
+| Query type           | Keywords only          | Natural language questions   |
+| Results              | List of matching pages | Direct answer + source links |
+| Handles synonyms     | Limited                | Yes — understands intent     |
+| Multi-page synthesis | No                     | Yes — combines information   |
+
+## AI Content Suggestions
+
+Baseflow analyzes your documentation and proactively suggests improvements:
+
+- **Missing content** — topics referenced in your docs but not covered in their own page
+- **Outdated sections** — areas that haven't been updated in a long time
+- **Readability issues** — sections that may be too complex for the target audience
+- **Broken references** — internal links that point to non-existent pages
+
+<Frame caption="AI content suggestions in the dashboard">
+  Screenshot needed: A dashboard panel titled "Content Suggestions" showing a
+  list of AI-generated recommendations with type badges (Missing, Outdated,
+  Readability) and action buttons.
+</Frame>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="AI drafts, humans edit">
+    Use AI to generate first drafts quickly, but always review and edit the
+    output. AI gets the structure right but needs human judgment for accuracy
+    and tone.
+  </Card>
+  <Card title="Be specific with prompts">
+    "Write a guide for OAuth 2.0 authentication using bearer tokens with code
+    examples in Node.js" produces better results than "Write about auth."
+  </Card>
+  <Card title="Review AI search answers">
+    Periodically test AI search with common reader questions. Make sure the
+    answers are accurate and link to the right pages.
+  </Card>
+  <Card title="Act on suggestions">
+    Check the AI content suggestions weekly. Even if you don't implement every
+    suggestion, they highlight where your docs need attention.
+  </Card>
+</CardGroup>
+
+<Callout type="tip">
+  AI features work best when your documentation is well-structured. Good
+  frontmatter (title + description), proper heading hierarchy, and clear writing
+  all help the AI understand and surface your content effectively.
+</Callout>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Analytics" icon="bar-chart" href="/advanced/analytics">
+    Track documentation usage and reader behavior.
+  </Card>
+  <Card
+    title="Writing Content"
+    icon="pencil"
+    href="/writing-content/markdown-basics"
+  >
+    Learn the fundamentals of writing great documentation.
+  </Card>
+</CardGroup>

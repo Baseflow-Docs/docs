@@ -1,0 +1,112 @@
+---
+title: Quickstart
+description: Deploy your first Baseflow docs site in under 5 minutes.
+---
+
+# Quickstart
+
+Go from zero to a live documentation site in four steps. No build pipeline required.
+
+## 1. Create Your Account
+
+Head to [baseflow.dev](https://baseflow.dev) and sign up with GitHub. Your account comes with one free project on the Starter plan.
+
+<Frame caption="Sign-up screen">
+  Screenshot needed: Baseflow sign-up page showing the GitHub OAuth button and
+  welcome copy.
+</Frame>
+
+## 2. Create a Project
+
+From the dashboard, click **New Project**. Give it a name and a slug — the slug determines your default URL at `your-slug.baseflow.dev`.
+
+<Frame caption="New project dialog">
+  Screenshot needed: The "Create Project" modal showing name, slug, and optional
+  description fields.
+</Frame>
+
+<Callout type="info">
+  You can connect a custom domain later from **Project Settings → Domains**.
+</Callout>
+
+## 3. Connect Your GitHub Repository
+
+Baseflow syncs documentation from a GitHub repo. Connect the repository that holds (or will hold) your docs.
+
+<Steps>
+  <Step title="Install the GitHub App">
+    When prompted, install the **Baseflow GitHub App** on your GitHub account or
+    organization. Grant access to the repositories you want to sync.
+  </Step>
+  <Step title="Select a Repository">
+    Pick the repo from the list. If you're starting fresh, create a new repo
+    first and come back.
+  </Step>
+  <Step title="Choose a Branch">
+    Select the branch Baseflow should read from. Most teams use `main` or
+    `docs`.
+  </Step>
+</Steps>
+
+<Frame caption="GitHub repository connection">
+  Screenshot needed: The repository connection screen showing the list of
+  available repos after GitHub App installation.
+</Frame>
+
+## 4. Add Your First Page
+
+Create a `docs.json` file at the root of your repo to configure navigation, then add your first MDX page.
+
+<CodeGroup>
+```json docs.json
+{
+  "name": "My Docs",
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["quickstart"]
+    }
+  ]
+}
+```
+
+```mdx quickstart.mdx
+---
+title: Quickstart
+description: Get started with our product.
+---
+
+# Quickstart
+
+Welcome to the docs! Start writing here.
+```
+
+</CodeGroup>
+
+Push the commit to your connected branch. Baseflow picks up the changes automatically and your site goes live within seconds.
+
+<Frame caption="Live docs site">
+  Screenshot needed: The rendered docs site showing the quickstart page with the
+  sidebar navigation visible.
+</Frame>
+
+## What's Next?
+
+<CardGroup cols={2}>
+  <Card title="Key Concepts" icon="lightbulb" href="/key-concepts">
+    Understand projects, syncing, and the dual-editing model.
+  </Card>
+  <Card
+    title="Writing Content"
+    icon="pencil"
+    href="/writing-content/markdown-basics"
+  >
+    Learn Markdown, MDX, and the writing tools available.
+  </Card>
+  <Card title="Components" icon="puzzle" href="/components/overview">
+    Add cards, tabs, code blocks, callouts, and more.
+  </Card>
+  <Card title="Customization" icon="palette" href="/customization/branding">
+    Apply your brand's logo, colors, and custom domain.
+  </Card>
+</CardGroup>

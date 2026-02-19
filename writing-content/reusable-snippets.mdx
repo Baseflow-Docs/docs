@@ -1,0 +1,115 @@
+---
+title: Reusable Snippets
+description: Share content across multiple pages using reusable MDX snippets.
+---
+
+# Reusable Snippets
+
+When the same content appears on multiple pages — a disclaimer, a setup prerequisite, or a shared configuration block — you can extract it into a reusable snippet to keep things consistent and maintainable.
+
+## How Snippets Work
+
+A snippet is a regular MDX file stored in a designated folder (typically `snippets/` or `_snippets/`). You reference it from other pages, and Baseflow inlines the content at render time.
+
+```
+my-docs/
+├── docs.json
+├── quickstart.mdx
+├── guides/
+│   ├── setup.mdx
+│   └── advanced.mdx
+└── snippets/
+    ├── prerequisites.mdx
+    └── support-callout.mdx
+```
+
+## Creating a Snippet
+
+Create an MDX file in your snippets folder. Snippets don't need frontmatter:
+
+```mdx snippets/prerequisites.mdx
+<Callout type="info">
+  **Prerequisites:** Make sure you have [Node.js](https://nodejs.org) v18+ and
+  npm installed before proceeding.
+</Callout>
+```
+
+## Using a Snippet
+
+Reference the snippet in any page by its file path. The content gets inlined wherever you place the reference.
+
+```mdx guides/setup.mdx
+---
+title: Setup Guide
+description: Full setup walkthrough for new users.
+---
+
+# Setup Guide
+
+<snippet file="snippets/prerequisites.mdx" />
+
+## Step 1: Install Dependencies
+
+Run the following command...
+```
+
+The prerequisites callout will appear inline at that position in the rendered page.
+
+## Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Shared Prerequisites" icon="check-circle">
+    A callout with system requirements that applies to every guide.
+  </Card>
+  <Card title="Legal Notices" icon="shield">
+    Disclaimers or compliance notes reused across multiple pages.
+  </Card>
+  <Card title="Configuration Blocks" icon="settings">
+    Common setup steps shared between quickstart and advanced guides.
+  </Card>
+  <Card title="Support CTAs" icon="message-circle">
+    "Need help? Contact us" blocks at the bottom of pages.
+  </Card>
+</CardGroup>
+
+## Best Practices
+
+<Steps>
+  <Step title="Keep snippets focused">
+    Each snippet should cover one concept or block. Small, single-purpose
+    snippets are easier to maintain and reuse.
+  </Step>
+  <Step title="Use a consistent folder">
+    Store all snippets in one location (e.g., `snippets/`). This makes them easy
+    to find and prevents duplication.
+  </Step>
+  <Step title="Don't add frontmatter">
+    Snippets don't render as standalone pages. Skip the `title` and
+    `description` frontmatter — they're only inserted into other pages.
+  </Step>
+  <Step title="Name descriptively">
+    `prerequisites.mdx` is clearer than `snippet-1.mdx`. Use names that describe
+    the content, not the location.
+  </Step>
+</Steps>
+
+<Callout type="tip">
+  Snippets are great for keeping a "single source of truth." When the content
+  changes, you update one file and every page that references it gets the update
+  automatically.
+</Callout>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Components Overview" icon="puzzle" href="/components/overview">
+    Explore all the MDX components you can use in your docs.
+  </Card>
+  <Card
+    title="File Organization"
+    icon="folder"
+    href="/project-structure/file-organization"
+  >
+    Learn how to structure files and folders in your docs repo.
+  </Card>
+</CardGroup>

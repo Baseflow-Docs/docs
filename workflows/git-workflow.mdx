@@ -1,0 +1,133 @@
+---
+title: Git Workflow
+description: Manage your documentation through Git — branches, pull requests, and version control.
+---
+
+# Git Workflow
+
+Baseflow treats your documentation repository as the source of truth. Every page, image, and configuration file lives in Git, giving you the full power of version control for your docs.
+
+## How It Works
+
+<Steps>
+  <Step title="Write locally">
+    Edit MDX files in your preferred code editor — VS Code, Vim, JetBrains,
+    whatever you use for code.
+  </Step>
+  <Step title="Commit and push">
+    Commit your changes and push to the connected branch (usually `main`).
+  </Step>
+  <Step title="Automatic sync">
+    Baseflow detects the push and updates your live docs site within seconds. No
+    build step, no deploy command.
+  </Step>
+</Steps>
+
+## Branch Strategy
+
+### Single-branch workflow
+
+The simplest approach: push directly to `main`. Every commit goes live immediately.
+
+```
+main ─────●─────●─────●───── (live)
+```
+
+Best for: small teams, personal projects, frequently updated docs.
+
+### Branch + PR workflow
+
+Use feature branches and pull requests to review changes before they go live:
+
+```
+main ─────────────●───────── (live)
+                 ╱
+feature ────●───●
+```
+
+<Steps>
+  <Step title="Create a branch">
+    ```bash git checkout -b docs/add-auth-guide ```
+  </Step>
+  <Step title="Write and commit">
+    Make your changes, commit them to the feature branch.
+  </Step>
+  <Step title="Open a pull request">
+    Create a PR on GitHub. Team members can review the content changes just like
+    code.
+  </Step>
+  <Step title="Merge to go live">
+    Once approved, merge the PR into `main`. Baseflow picks up the changes and
+    publishes them.
+  </Step>
+</Steps>
+
+<Frame caption="Pull request reviewing documentation changes">
+  Screenshot needed: A GitHub pull request showing a diff of an MDX file being
+  added, with review comments on the content.
+</Frame>
+
+## Reviewing Docs in PRs
+
+Documentation changes show up in GitHub pull request diffs just like code changes. Reviewers can:
+
+- See exactly what text was added, removed, or modified
+- Leave inline comments on specific lines
+- Request changes before the content goes live
+- Approve the PR to allow merging
+
+<Callout type="tip">
+  Use descriptive commit messages like "Add authentication guide" instead of
+  "Update docs." This makes the Git history useful for understanding what
+  changed and why.
+</Callout>
+
+## Connecting a Repository
+
+Set up the Git connection from the Baseflow dashboard:
+
+<Steps>
+  <Step title="Install the GitHub App">
+    Go to **Project Settings → GitHub** and install the Baseflow GitHub App on
+    your GitHub account or organization.
+  </Step>
+  <Step title="Select repository and branch">
+    Choose the repository and branch that contains (or will contain) your
+    documentation files.
+  </Step>
+  <Step title="Automatic sync starts">
+    Baseflow begins syncing immediately. Any existing docs in the repo will
+    appear on your site.
+  </Step>
+</Steps>
+
+<Frame caption="GitHub connection settings">
+  Screenshot needed: The project settings page showing the connected GitHub
+  repository, branch, and sync status.
+</Frame>
+
+## .gitignore
+
+You don't need any special `.gitignore` rules for Baseflow. Your docs repo typically contains only:
+
+- MDX files
+- Images and logos
+- `docs.json` config
+- Optionally, snippets and other assets
+
+All of these should be tracked in Git.
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Visual Editor" icon="edit" href="/workflows/visual-editor">
+    Edit docs in the browser without Git.
+  </Card>
+  <Card
+    title="Review and Publish"
+    icon="check-circle"
+    href="/workflows/review-and-publish"
+  >
+    Set up review workflows for your team.
+  </Card>
+</CardGroup>

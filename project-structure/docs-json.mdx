@@ -1,0 +1,200 @@
+---
+title: docs.json
+description: The central configuration file for your Baseflow documentation site.
+---
+
+# docs.json
+
+Every Baseflow project is configured through a single `docs.json` file at the root of your repository. This file defines your site name, navigation, branding, and theme.
+
+## Minimal Example
+
+```json docs.json
+{
+  "name": "My Docs",
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["quickstart"]
+    }
+  ]
+}
+```
+
+This is all you need to get started — a name and at least one navigation group with one page.
+
+## Full Example
+
+```json docs.json
+{
+  "name": "Acme Docs",
+  "logo": {
+    "light": "/logos/light.svg",
+    "dark": "/logos/dark.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
+  },
+  "topbarLinks": [{ "name": "Dashboard", "url": "https://app.acme.com" }],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://app.acme.com/signup"
+  },
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["quickstart", "key-concepts"]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/authentication",
+        {
+          "group": "Advanced",
+          "pages": ["guides/advanced/webhooks", "guides/advanced/rate-limits"]
+        }
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/acme",
+    "twitter": "https://twitter.com/acme"
+  }
+}
+```
+
+## Configuration Reference
+
+### Top-Level Fields
+
+| Field             | Type     | Description                                                                    |
+| ----------------- | -------- | ------------------------------------------------------------------------------ |
+| `name`            | `string` | **Required.** The name of your docs site. Shown in the header and browser tab. |
+| `logo`            | `object` | Logo configuration with `light` and `dark` variants.                           |
+| `favicon`         | `string` | Path to your favicon file.                                                     |
+| `colors`          | `object` | Theme color overrides.                                                         |
+| `navigation`      | `array`  | **Required.** Array of navigation groups defining the sidebar.                 |
+| `topbarLinks`     | `array`  | Links displayed in the top navigation bar.                                     |
+| `topbarCtaButton` | `object` | Call-to-action button in the top bar.                                          |
+| `footerSocials`   | `object` | Social media links shown in the footer.                                        |
+
+### Logo
+
+```json
+{
+  "logo": {
+    "light": "/logos/logo-light.svg",
+    "dark": "/logos/logo-dark.svg"
+  }
+}
+```
+
+| Field   | Type     | Description               |
+| ------- | -------- | ------------------------- |
+| `light` | `string` | Logo shown in light mode. |
+| `dark`  | `string` | Logo shown in dark mode.  |
+
+Place logo files in your repository and reference by path.
+
+### Colors
+
+```json
+{
+  "colors": {
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
+  }
+}
+```
+
+| Field     | Type     | Description                        |
+| --------- | -------- | ---------------------------------- |
+| `primary` | `string` | Primary accent color (hex).        |
+| `light`   | `string` | Light mode variant of the primary. |
+| `dark`    | `string` | Dark mode variant of the primary.  |
+
+### Navigation
+
+The `navigation` array defines the sidebar structure. See [Navigation](/project-structure/navigation) for complete details.
+
+```json
+{
+  "navigation": [
+    {
+      "group": "Section Name",
+      "pages": ["page-slug", "folder/page-slug"]
+    }
+  ]
+}
+```
+
+### Top Bar Links
+
+```json
+{
+  "topbarLinks": [
+    { "name": "Blog", "url": "https://blog.acme.com" },
+    { "name": "GitHub", "url": "https://github.com/acme" }
+  ]
+}
+```
+
+| Field  | Type     | Description           |
+| ------ | -------- | --------------------- |
+| `name` | `string` | Link display text.    |
+| `url`  | `string` | Link destination URL. |
+
+### Top Bar CTA Button
+
+```json
+{
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://app.acme.com/signup"
+  }
+}
+```
+
+| Field  | Type     | Description             |
+| ------ | -------- | ----------------------- |
+| `name` | `string` | Button label text.      |
+| `url`  | `string` | Button destination URL. |
+
+### Footer Socials
+
+```json
+{
+  "footerSocials": {
+    "github": "https://github.com/acme",
+    "twitter": "https://twitter.com/acme",
+    "discord": "https://discord.gg/acme",
+    "linkedin": "https://linkedin.com/company/acme"
+  }
+}
+```
+
+Supported keys: `github`, `twitter`, `discord`, `linkedin`, `youtube`, `slack`, `website`.
+
+<Callout type="tip">
+  After changing `docs.json`, push the commit to your connected branch. Baseflow
+  picks up the new configuration automatically.
+</Callout>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Navigation" icon="list" href="/project-structure/navigation">
+    Learn how to structure sidebar navigation with groups and nesting.
+  </Card>
+  <Card
+    title="File Organization"
+    icon="folder"
+    href="/project-structure/file-organization"
+  >
+    Best practices for organizing files and folders.
+  </Card>
+</CardGroup>

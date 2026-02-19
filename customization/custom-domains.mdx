@@ -1,0 +1,102 @@
+---
+title: Custom Domains
+description: Connect your own domain to your Baseflow documentation site.
+---
+
+# Custom Domains
+
+By default, your docs are served at `your-slug.baseflow.dev`. With a custom domain, you can host documentation on your own subdomain like `docs.yourcompany.com`.
+
+<Callout type="info">
+  Custom domains are available on the **Pro plan** and above.
+</Callout>
+
+## Setup Steps
+
+<Steps>
+  <Step title="Open Project Settings">
+    Go to your project in the Baseflow dashboard and navigate to **Settings → Domains**.
+  </Step>
+  <Step title="Add Your Domain">
+    Enter the domain you want to use, such as `docs.yourcompany.com`. Click **Add Domain**.
+
+    <Frame caption="Add custom domain dialog">
+      Screenshot needed: The domain settings panel with a text input for the custom domain and an "Add Domain" button.
+    </Frame>
+
+  </Step>
+  <Step title="Configure DNS">
+    Add a CNAME record with your DNS provider pointing your domain to Baseflow:
+
+    | Type    | Name   | Value                     |
+    | ------- | ------ | ------------------------- |
+    | `CNAME` | `docs` | `cname.baseflow.dev`      |
+
+    <Callout type="warning">
+      DNS changes can take up to 48 hours to propagate, though most complete within minutes.
+    </Callout>
+
+  </Step>
+  <Step title="Verify and Go Live">
+    Once DNS propagates, Baseflow automatically verifies the domain and provisions an SSL certificate. Your docs will be accessible at your custom domain with HTTPS.
+
+    <Frame caption="Domain verified and active">
+      Screenshot needed: The domain settings panel showing a green "Active" badge next to the custom domain with SSL status confirmed.
+    </Frame>
+
+  </Step>
+</Steps>
+
+## SSL Certificates
+
+Baseflow automatically provisions and renews SSL certificates for custom domains via Let's Encrypt. No manual configuration needed — HTTPS works out of the box.
+
+## Subdomain vs. Root Domain
+
+| Configuration           | DNS Record | Example                |
+| ----------------------- | ---------- | ---------------------- |
+| Subdomain (recommended) | `CNAME`    | `docs.yourcompany.com` |
+| Root domain             | `A` record | `yourcompany.com`      |
+
+<Callout type="tip">
+  We recommend using a subdomain like `docs.yourcompany.com`. This is simpler to
+  configure and doesn't interfere with your main website.
+</Callout>
+
+## Multiple Domains
+
+If you need the same docs at multiple domains (e.g., during a migration), you can add more than one custom domain to a project. Both will serve the same content.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Domain shows 'Pending' for a long time">
+    DNS propagation can take up to 48 hours. Verify your CNAME record is
+    correctly set using a tool like [dnschecker.org](https://dnschecker.org).
+    Make sure the CNAME target is `cname.baseflow.dev` (not your Baseflow
+    subdomain).
+  </Accordion>
+  <Accordion title="SSL certificate not provisioning">
+    SSL certificates are issued automatically once DNS is verified. If it's
+    stuck, check that there are no conflicting DNS records (like an A record on
+    the same subdomain) and that your DNS provider isn't proxying the request
+    (e.g., Cloudflare orange cloud — set it to DNS-only / grey cloud during
+    setup).
+  </Accordion>
+  <Accordion title="Domain works but shows wrong content">
+    Make sure the domain is connected to the correct project in the Baseflow
+    dashboard. If you have multiple projects, verify you're editing the right
+    one.
+  </Accordion>
+</AccordionGroup>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="SEO" icon="search" href="/customization/seo">
+    Optimize your docs for search engines.
+  </Card>
+  <Card title="Branding" icon="palette" href="/customization/branding">
+    Customize logos, colors, and site identity.
+  </Card>
+</CardGroup>

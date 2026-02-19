@@ -1,0 +1,73 @@
+---
+title: Tooltips
+description: Inline hover text for definitions, abbreviations, and additional context.
+---
+
+# Tooltips
+
+Tooltips add hover-activated definitions or context to any word or phrase. Use them to explain terms, abbreviations, or jargon without interrupting the reading flow.
+
+## Basic Usage
+
+```mdx
+Baseflow uses <Tooltip tip="Markdown extended with JSX components">MDX</Tooltip> for all documentation pages.
+```
+
+Baseflow uses <Tooltip tip="Markdown extended with JSX components">MDX</Tooltip> for all documentation pages.
+
+The tooltip appears when the reader hovers over the underlined text.
+
+## Props
+
+| Prop  | Type     | Description                            |
+| ----- | -------- | -------------------------------------- |
+| `tip` | `string` | **Required.** The text shown on hover. |
+
+The component's children (the text between the tags) become the trigger element.
+
+## Examples
+
+### Technical terms
+
+```mdx
+Your docs site uses <Tooltip tip="Secure Socket Layer — encrypts data between the browser and server">SSL</Tooltip> by default.
+```
+
+Your docs site uses <Tooltip tip="Secure Socket Layer — encrypts data between the browser and server">SSL</Tooltip> by default.
+
+### Feature clarification
+
+```mdx
+Changes sync via <Tooltip tip="Edits made in the browser are committed to Git, and Git pushes appear in the editor">bi-directional sync</Tooltip> automatically.
+```
+
+Changes sync via <Tooltip tip="Edits made in the browser are committed to Git, and Git pushes appear in the editor">bi-directional sync</Tooltip> automatically.
+
+### Abbreviations
+
+```mdx
+The <Tooltip tip="Command Line Interface">CLI</Tooltip> tool supports all major operating systems.
+```
+
+The <Tooltip tip="Command Line Interface">CLI</Tooltip> tool supports all major operating systems.
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Use for genuine clarification">
+    Tooltips work best for terms that some readers may not know but that don't
+    warrant a full paragraph of explanation.
+  </Card>
+  <Card title="Keep tooltip text short">
+    One or two sentences max. If you need more, link to a dedicated page
+    instead.
+  </Card>
+  <Card title="Don't overuse">
+    Too many tooltips on a page make the text hard to read. Reserve them for
+    uncommon terms.
+  </Card>
+  <Card title="Avoid on mobile-critical content">
+    Hover doesn't work well on touch devices. Don't put essential information
+    only in tooltips.
+  </Card>
+</CardGroup>

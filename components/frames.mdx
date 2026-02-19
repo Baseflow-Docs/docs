@@ -1,0 +1,104 @@
+---
+title: Frames
+description: Bordered containers for screenshots and media with optional captions.
+---
+
+# Frames
+
+The `Frame` component wraps images and media in a styled container with an optional caption. Use it for screenshots, diagrams, and any visual content that benefits from consistent presentation.
+
+## Basic Usage
+
+```mdx
+<Frame caption="The Baseflow dashboard">
+  ![Dashboard](/images/dashboard.png)
+</Frame>
+```
+
+<Frame caption="The Baseflow dashboard">
+  Screenshot needed: The main Baseflow dashboard showing project list, recent
+  activity, and navigation sidebar.
+</Frame>
+
+## Props
+
+| Prop      | Type     | Description                                        |
+| --------- | -------- | -------------------------------------------------- |
+| `caption` | `string` | Optional caption text displayed below the content. |
+
+## Without Caption
+
+If no caption is needed, `Frame` still provides the bordered container styling:
+
+```mdx
+<Frame>![Architecture diagram](/images/architecture.svg)</Frame>
+```
+
+<Frame>
+  Screenshot needed: An architecture diagram showing the flow from Git
+  repository through Baseflow to the live docs site.
+</Frame>
+
+## With Different Content
+
+Frames aren't limited to images. You can wrap any content:
+
+````mdx
+<Frame caption="Terminal output after a successful deploy">
+  ```bash
+  ✓ Synced 12 pages
+  ✓ Processed 3 images
+  ✓ Site live at https://docs.example.com
+  Deploy completed in 2.3s
+````
+
+</Frame>
+```
+
+<Frame caption="Terminal output after a successful deploy">
+  ```bash ✓ Synced 12 pages ✓ Processed 3 images ✓ Site live at
+  https://docs.example.com Deploy completed in 2.3s ```
+</Frame>
+
+## Examples
+
+### Product screenshot with context
+
+```mdx
+<Frame caption="The visual editor — edit docs in the browser without Git">
+  ![Visual editor](/images/visual-editor.png)
+</Frame>
+```
+
+<Frame caption="The visual editor — edit docs in the browser without Git">
+  Screenshot needed: The Baseflow visual editor showing a page being edited with
+  the formatting toolbar, sidebar navigation, and live preview.
+</Frame>
+
+### Diagram
+
+```mdx
+<Frame caption="Bi-directional sync between Git and the visual editor">
+  ![Sync diagram](/images/sync-flow.svg)
+</Frame>
+```
+
+<Frame caption="Bi-directional sync between Git and the visual editor">
+  Screenshot needed: A flow diagram with arrows showing Git push → Baseflow
+  processes → live site, and visual editor save → Git commit → live site.
+</Frame>
+
+## Best Practices
+
+| Practice                    | Why                                           |
+| --------------------------- | --------------------------------------------- |
+| Always include alt text     | Accessibility for screen readers              |
+| Add captions to screenshots | Provides context without cluttering the prose |
+| Use SVG for diagrams        | Scales cleanly at any screen size             |
+| Keep images focused         | Crop to show only the relevant UI area        |
+
+<Callout type="tip">
+  For simple inline images within text flow, use standard Markdown image syntax
+  without a Frame wrapper. Reserve Frames for images that deserve visual
+  emphasis and captions.
+</Callout>

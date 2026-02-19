@@ -1,0 +1,132 @@
+---
+title: File Organization
+description: Best practices for organizing files and folders in your Baseflow docs repository.
+---
+
+# File Organization
+
+How you structure files in your documentation repository affects maintainability, navigation, and collaboration. Here are the recommended patterns.
+
+## Recommended Structure
+
+```
+my-docs/
+├── docs.json                  # Site configuration
+├── index.mdx                  # Home page
+├── quickstart.mdx             # Top-level pages
+├── key-concepts.mdx
+├── guides/                    # Grouped by topic
+│   ├── authentication.mdx
+│   ├── deployment.mdx
+│   └── troubleshooting.mdx
+├── api/                       # API reference
+│   ├── overview.mdx
+│   └── endpoints/
+│       ├── users.mdx
+│       └── projects.mdx
+├── images/                    # Visual assets
+│   ├── dashboard.png
+│   └── setup-wizard.png
+├── logos/                     # Brand assets
+│   ├── logo-light.svg
+│   └── logo-dark.svg
+└── snippets/                  # Reusable content
+    └── prerequisites.mdx
+```
+
+## Guidelines
+
+### Match navigation to folders
+
+Your folder structure should mirror the navigation in `docs.json`. If there's a "Guides" group in the sidebar, there should be a `guides/` folder in the repo.
+
+```json
+{
+  "navigation": [
+    {
+      "group": "Guides",
+      "pages": ["guides/authentication", "guides/deployment"]
+    }
+  ]
+}
+```
+
+This makes it easy to find files in the repository based on where they appear in the sidebar.
+
+### Use descriptive file names
+
+| Good                     | Bad               |
+| ------------------------ | ----------------- |
+| `authentication.mdx`     | `auth.mdx`        |
+| `getting-started.mdx`    | `gs.mdx`          |
+| `api-rate-limits.mdx`    | `limits.mdx`      |
+| `github-app-install.png` | `screenshot1.png` |
+
+File names become URL slugs, so `authentication.mdx` renders at `/guides/authentication`. Keep them readable.
+
+### Separate assets from content
+
+Keep images, logos, and other media in dedicated folders:
+
+```
+images/     → Screenshots, diagrams, illustrations
+logos/      → Light/dark logo variants, favicon
+snippets/  → Reusable MDX content blocks
+```
+
+<Callout type="tip">
+  Don't scatter images alongside MDX files. A central `images/` folder makes
+  assets easy to find and manage.
+</Callout>
+
+### Flat over deep
+
+Prefer shallow folder structures. One level of nesting is usually enough:
+
+```
+# Good — flat and scannable
+guides/
+├── authentication.mdx
+├── deployment.mdx
+└── troubleshooting.mdx
+
+# Avoid — too nested
+guides/
+└── getting-started/
+    └── first-steps/
+        └── authentication/
+            └── overview.mdx
+```
+
+### Keep files small
+
+Each MDX file should cover one topic. If a page gets longer than ~500 lines, consider splitting it into multiple pages and linking between them.
+
+## Special Files
+
+| File         | Purpose                                         |
+| ------------ | ----------------------------------------------- |
+| `docs.json`  | Site configuration (required at repo root)      |
+| `index.mdx`  | Home page — rendered at the root URL            |
+| `snippets/*` | Reusable content blocks (not rendered as pages) |
+| `logos/*`    | Logo variants referenced in `docs.json`         |
+| `images/*`   | Media assets referenced from MDX pages          |
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="docs.json Reference"
+    icon="settings"
+    href="/project-structure/docs-json"
+  >
+    Full configuration reference for your docs site.
+  </Card>
+  <Card
+    title="Reusable Snippets"
+    icon="copy"
+    href="/writing-content/reusable-snippets"
+  >
+    Extract shared content into reusable files.
+  </Card>
+</CardGroup>

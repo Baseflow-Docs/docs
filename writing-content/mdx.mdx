@@ -1,0 +1,139 @@
+---
+title: MDX
+description: Extend Markdown with interactive components using MDX syntax.
+---
+
+# MDX
+
+MDX lets you use JSX components directly inside Markdown. This is how Baseflow supports rich, interactive documentation without leaving a familiar writing format.
+
+## What Is MDX?
+
+MDX is Markdown + JSX. You write regular Markdown for prose and drop in components for anything richer — cards, tabs, callouts, code groups, and more.
+
+```mdx
+# Regular Markdown heading
+
+This is a paragraph. Standard Markdown syntax works everywhere.
+
+<Callout type="tip">
+  And this is a component — rendered as a styled callout box.
+</Callout>
+```
+
+Components are available globally. You never need to add import statements.
+
+## Component Syntax
+
+Components use JSX syntax:
+
+```mdx
+<ComponentName prop="value" numericProp={3} booleanProp>
+  Children go here (can be Markdown or other components).
+</ComponentName>
+```
+
+**Key rules:**
+
+- Component names are **PascalCase** (`CardGroup`, not `cardgroup`)
+- String props use quotes: `title="Hello"`
+- Numeric and boolean props use curly braces: `cols={2}`
+- Boolean props without a value default to `true`: `<Step>` is the same as `<Step expandable={true}>`
+- Self-closing syntax works for components with no children: `<Icon name="star" />`
+
+## Nesting Components
+
+Components can be nested inside each other:
+
+```mdx
+<CardGroup cols={2}>
+  <Card title="First Card" icon="star">
+    This card contains a **bold** word and a [link](/quickstart).
+  </Card>
+  <Card title="Second Card" icon="zap">
+    <Callout type="info">You can even put callouts inside cards.</Callout>
+  </Card>
+</CardGroup>
+```
+
+## Markdown Inside Components
+
+Most components accept Markdown as children. Bold, italic, links, lists, and code spans all work inside component bodies:
+
+```mdx
+<Callout type="warning">
+  Make sure to run `npm install` **before** starting the dev server.
+
+- Step one
+- Step two
+  </Callout>
+```
+
+<Callout type="warning">
+  Make sure to run `npm install` **before** starting the dev server.
+
+- Step one
+- Step two
+  </Callout>
+
+## Expressions
+
+Use curly braces to embed JavaScript expressions:
+
+```mdx
+<CardGroup cols={2 + 1}>
+  {/* This is a JSX comment — it won't appear in the output */}
+</CardGroup>
+```
+
+## Common Patterns
+
+### Feature grid
+
+```mdx
+<CardGroup cols={3}>
+  <Card title="Fast" icon="zap">
+    Deploys in seconds.
+  </Card>
+  <Card title="Flexible" icon="sliders">
+    Customize everything.
+  </Card>
+  <Card title="Collaborative" icon="users">
+    Built for teams.
+  </Card>
+</CardGroup>
+```
+
+### Step-by-step guide
+
+```mdx
+<Steps>
+  <Step title="Install">Run `npm install` in your terminal.</Step>
+  <Step title="Configure">Create a `docs.json` at the project root.</Step>
+  <Step title="Write">Add your first `.mdx` file.</Step>
+</Steps>
+```
+
+### Tabbed content
+
+````mdx
+<Tabs>
+  <Tab title="npm">```bash npm install baseflow ```</Tab>
+  <Tab title="yarn">```bash yarn add baseflow ```</Tab>
+</Tabs>
+````
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Frontmatter"
+    icon="file-text"
+    href="/writing-content/frontmatter"
+  >
+    Add metadata to your pages with YAML frontmatter.
+  </Card>
+  <Card title="Components Overview" icon="puzzle" href="/components/overview">
+    See every available component and how to use it.
+  </Card>
+</CardGroup>

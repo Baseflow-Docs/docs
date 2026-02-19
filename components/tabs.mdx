@@ -1,0 +1,112 @@
+---
+title: Tabs
+description: Organize content into tabbed views for language toggles, platform variants, and more.
+---
+
+# Tabs
+
+Tabs let readers switch between content panels without leaving the page. Use them to show the same information in different languages, for different platforms, or to organize related sections.
+
+## Basic Usage
+
+````mdx
+<Tabs>
+  <Tab title="React">
+    Install the React SDK:
+
+    ```bash
+    npm install @example/react-sdk
+    ```
+
+  </Tab>
+  <Tab title="Vue">
+    Install the Vue SDK:
+
+    ```bash
+    npm install @example/vue-sdk
+    ```
+
+  </Tab>
+  <Tab title="Angular">
+    Install the Angular SDK:
+
+    ```bash
+    npm install @example/angular-sdk
+    ```
+
+  </Tab>
+</Tabs>
+````
+
+<Tabs>
+  <Tab title="React">
+    Install the React SDK:
+
+    ```bash
+    npm install @example/react-sdk
+    ```
+
+  </Tab>
+  <Tab title="Vue">
+    Install the Vue SDK:
+
+    ```bash
+    npm install @example/vue-sdk
+    ```
+
+  </Tab>
+  <Tab title="Angular">
+    Install the Angular SDK:
+
+    ```bash
+    npm install @example/angular-sdk
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Tabs
+
+| Prop | Type | Description                                        |
+| ---- | ---- | -------------------------------------------------- |
+| —    | —    | Container component. No additional props required. |
+
+### Tab
+
+| Prop    | Type     | Description                           |
+| ------- | -------- | ------------------------------------- |
+| `title` | `string` | **Required.** Label shown on the tab. |
+
+## Rich Content Inside Tabs
+
+Each tab can contain any Markdown or MDX content — paragraphs, code blocks, callouts, cards, even other components:
+
+````mdx
+<Tabs>
+  <Tab title="npm">```bash npm install my-package ```</Tab>
+  <Tab title="yarn">```bash yarn add my-package ```</Tab>
+  <Tab title="pnpm">```bash pnpm add my-package ```</Tab>
+</Tabs>
+````
+
+<Tabs>
+  <Tab title="npm">```bash npm install my-package ```</Tab>
+  <Tab title="yarn">```bash yarn add my-package ```</Tab>
+  <Tab title="pnpm">```bash pnpm add my-package ```</Tab>
+</Tabs>
+
+## When to Use Tabs vs. CodeGroup
+
+| Use Case                         | Component   |
+| -------------------------------- | ----------- |
+| Multiple code files/languages    | `CodeGroup` |
+| Mixed content (text + code)      | `Tabs`      |
+| Platform-specific instructions   | `Tabs`      |
+| Same code in different languages | `CodeGroup` |
+
+<Callout type="tip">
+  If every tab contains only a code block, `CodeGroup` gives a cleaner look. Use
+  `Tabs` when tabs contain prose, callouts, or mixed content.
+</Callout>

@@ -1,0 +1,155 @@
+---
+title: Branding
+description: Customize your docs site with your own logos, favicon, and identity.
+---
+
+# Branding
+
+Make your documentation look like part of your product. Baseflow lets you replace the default branding with your own logos, favicon, and site name.
+
+## Site Name
+
+Set the `name` field in `docs.json` to your brand or product name:
+
+```json docs.json
+{
+  "name": "Acme Docs"
+}
+```
+
+The name appears in the header, browser tab, and any place Baseflow references your site.
+
+## Logo
+
+Provide light and dark variants of your logo so it looks correct in both themes:
+
+```json docs.json
+{
+  "logo": {
+    "light": "/logos/logo-light.svg",
+    "dark": "/logos/logo-dark.svg"
+  }
+}
+```
+
+Place the logo files in your repository (e.g., in a `logos/` folder) and reference them by path.
+
+<Frame caption="Logo placement in the docs header">
+  Screenshot needed: The docs site header showing the custom logo on the left
+  side with site navigation on the right.
+</Frame>
+
+### Logo Guidelines
+
+| Guideline     | Recommendation                                   |
+| ------------- | ------------------------------------------------ |
+| Format        | SVG preferred for sharpness at all sizes         |
+| Dimensions    | Horizontal/landscape orientation works best      |
+| Background    | Use transparent backgrounds                      |
+| Light variant | Dark-colored logo for light backgrounds          |
+| Dark variant  | Light-colored or white logo for dark backgrounds |
+
+<Callout type="tip">
+  If your logo looks the same on both light and dark backgrounds, you can use
+  the same file for both variants.
+</Callout>
+
+## Favicon
+
+Add a favicon that appears in browser tabs:
+
+```json docs.json
+{
+  "favicon": "/favicon.svg"
+}
+```
+
+SVG favicons are recommended for clarity at small sizes. PNG (32×32 or 64×64) also works.
+
+## Header CTA Button
+
+Add a call-to-action button in the top navigation bar:
+
+```json docs.json
+{
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://app.acme.com/signup"
+  }
+}
+```
+
+<Frame caption="Header with CTA button">
+  Screenshot needed: The top navigation bar showing navigation links on the left
+  and a "Get Started" button on the right.
+</Frame>
+
+## Header Links
+
+Add navigation links alongside the CTA button:
+
+```json docs.json
+{
+  "topbarLinks": [
+    { "name": "Blog", "url": "https://blog.acme.com" },
+    { "name": "Community", "url": "https://community.acme.com" }
+  ]
+}
+```
+
+## Footer Social Links
+
+Display social media icons in the site footer:
+
+```json docs.json
+{
+  "footerSocials": {
+    "github": "https://github.com/acme",
+    "twitter": "https://twitter.com/acme",
+    "discord": "https://discord.gg/acme"
+  }
+}
+```
+
+Supported platforms: `github`, `twitter`, `discord`, `linkedin`, `youtube`, `slack`, `website`.
+
+## Complete Branding Example
+
+```json docs.json
+{
+  "name": "Acme Developer Docs",
+  "logo": {
+    "light": "/logos/acme-light.svg",
+    "dark": "/logos/acme-dark.svg"
+  },
+  "favicon": "/logos/favicon.svg",
+  "topbarLinks": [{ "name": "Blog", "url": "https://acme.com/blog" }],
+  "topbarCtaButton": {
+    "name": "Sign Up",
+    "url": "https://app.acme.com"
+  },
+  "footerSocials": {
+    "github": "https://github.com/acme",
+    "twitter": "https://twitter.com/acme"
+  }
+}
+```
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Colors and Themes"
+    icon="palette"
+    href="/customization/colors-and-themes"
+  >
+    Customize the color scheme of your docs site.
+  </Card>
+  <Card
+    title="Custom Domains"
+    icon="globe"
+    href="/customization/custom-domains"
+  >
+    Connect your own domain to your docs site.
+  </Card>
+</CardGroup>

@@ -1,0 +1,115 @@
+---
+title: Images and Media
+description: Add images, screenshots, and other media assets to your documentation.
+---
+
+# Images and Media
+
+Baseflow supports images in Markdown syntax and offers the `Frame` component for screenshots and media that need captions or borders.
+
+## Basic Images
+
+Use standard Markdown image syntax:
+
+```markdown
+![Dashboard overview](/images/dashboard.png)
+```
+
+Place image files in your repository and reference them by path. Baseflow resolves paths relative to the repository root.
+
+## Image Paths
+
+Images can live anywhere in your repo. A common convention is an `images/` or `assets/` folder:
+
+```
+my-docs/
+├── docs.json
+├── quickstart.mdx
+└── images/
+    ├── dashboard.png
+    └── setup-wizard.png
+```
+
+Then reference them:
+
+```markdown
+![Setup wizard](/images/setup-wizard.png)
+```
+
+<Callout type="tip">
+  Use descriptive file names like `github-app-install.png` instead of
+  `screenshot-1.png`. This makes the repo easier to navigate and improves
+  accessibility via alt text.
+</Callout>
+
+## The Frame Component
+
+For screenshots and images that benefit from a caption or styled border, use the `Frame` component:
+
+```mdx
+<Frame caption="The project dashboard after first deploy">
+  ![Project dashboard](/images/dashboard.png)
+</Frame>
+```
+
+<Frame caption="The project dashboard after first deploy">
+  Screenshot needed: A project dashboard showing the sidebar navigation, recent
+  activity, and deploy status.
+</Frame>
+
+The `Frame` component adds:
+
+- A subtle border around the image
+- An optional caption below
+- Consistent spacing and alignment
+
+See [Frames](/components/frames) for the full component API.
+
+## External Images
+
+You can link to externally hosted images:
+
+```markdown
+![Logo](https://example.com/logo.png)
+```
+
+<Callout type="warning">
+  External images depend on third-party availability. For critical documentation
+  assets, host images in your repository to ensure they're always accessible.
+</Callout>
+
+## SVGs
+
+SVG files work the same as other images:
+
+```markdown
+![Architecture diagram](/images/architecture.svg)
+```
+
+SVGs are particularly useful for diagrams and icons since they scale cleanly at any size.
+
+## Best Practices
+
+| Practice                    | Why                                           |
+| --------------------------- | --------------------------------------------- |
+| Add meaningful alt text     | Improves accessibility and SEO                |
+| Use `Frame` for screenshots | Provides consistent styling and captions      |
+| Optimize file size          | Large images slow down page loads             |
+| Use SVG for diagrams        | Scales without quality loss                   |
+| Organize images in a folder | Keeps the repo clean and images easy to find  |
+| Use descriptive file names  | Easier to manage and better for accessibility |
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Reusable Snippets"
+    icon="copy"
+    href="/writing-content/reusable-snippets"
+  >
+    Share content across multiple pages.
+  </Card>
+  <Card title="Frames Component" icon="image" href="/components/frames">
+    Full reference for the Frame component.
+  </Card>
+</CardGroup>

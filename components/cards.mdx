@@ -1,0 +1,134 @@
+---
+title: Cards
+description: Display content in card layouts for feature grids, link lists, and grouped information.
+---
+
+# Cards
+
+Cards are versatile containers for grouping related content. Use them for feature highlights, quick-link grids, or any content that benefits from a visual card layout.
+
+## Card
+
+A single card with a title, optional icon, and content body.
+
+```mdx
+<Card title="Getting Started" icon="rocket" href="/quickstart">
+  Set up your first docs site in under 5 minutes.
+</Card>
+```
+
+<Card title="Getting Started" icon="rocket" href="/quickstart">
+  Set up your first docs site in under 5 minutes.
+</Card>
+
+### Props
+
+| Prop    | Type     | Description                                |
+| ------- | -------- | ------------------------------------------ |
+| `title` | `string` | **Required.** The card heading.            |
+| `icon`  | `string` | Icon name displayed next to the title.     |
+| `href`  | `string` | Link URL. Makes the entire card clickable. |
+
+## CardGroup
+
+Arranges multiple cards in a responsive grid.
+
+```mdx
+<CardGroup cols={3}>
+  <Card title="Fast" icon="zap">
+    Deploys in seconds, no build step.
+  </Card>
+  <Card title="Flexible" icon="sliders">
+    Customize layout, colors, and navigation.
+  </Card>
+  <Card title="Collaborative" icon="users">
+    Built for teams of all sizes.
+  </Card>
+</CardGroup>
+```
+
+<CardGroup cols={3}>
+  <Card title="Fast" icon="zap">
+    Deploys in seconds, no build step.
+  </Card>
+  <Card title="Flexible" icon="sliders">
+    Customize layout, colors, and navigation.
+  </Card>
+  <Card title="Collaborative" icon="users">
+    Built for teams of all sizes.
+  </Card>
+</CardGroup>
+
+### Props
+
+| Prop   | Type     | Default | Description                                    |
+| ------ | -------- | ------- | ---------------------------------------------- |
+| `cols` | `number` | `2`     | Number of columns in the grid (1, 2, 3, or 4). |
+
+## Examples
+
+### Link cards (2 columns)
+
+```mdx
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started with Baseflow.
+  </Card>
+  <Card title="Key Concepts" icon="lightbulb" href="/key-concepts">
+    Learn the core ideas.
+  </Card>
+</CardGroup>
+```
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started with Baseflow.
+  </Card>
+  <Card title="Key Concepts" icon="lightbulb" href="/key-concepts">
+    Learn the core ideas.
+  </Card>
+</CardGroup>
+
+### Feature highlights (no links)
+
+```mdx
+<CardGroup cols={2}>
+  <Card title="Git Sync" icon="git-branch">
+    Every edit creates a real commit. Full version history included.
+  </Card>
+  <Card title="Instant Deploy" icon="zap">
+    No CI pipeline. Changes go live the moment you save.
+  </Card>
+</CardGroup>
+```
+
+<CardGroup cols={2}>
+  <Card title="Git Sync" icon="git-branch">
+    Every edit creates a real commit. Full version history included.
+  </Card>
+  <Card title="Instant Deploy" icon="zap">
+    No CI pipeline. Changes go live the moment you save.
+  </Card>
+</CardGroup>
+
+### Single column list
+
+```mdx
+<CardGroup cols={1}>
+  <Card title="Step 1: Create a project" icon="plus">
+    Start from the dashboard.
+  </Card>
+  <Card title="Step 2: Connect Git" icon="git-branch">
+    Link your GitHub repository.
+  </Card>
+  <Card title="Step 3: Write" icon="pencil">
+    Add your first MDX page.
+  </Card>
+</CardGroup>
+```
+
+<Callout type="tip">
+  For true step-by-step instructions, use the [Steps
+  component](/components/steps) instead — it provides numbered steps with a
+  visual progress indicator.
+</Callout>

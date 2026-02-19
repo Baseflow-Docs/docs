@@ -1,0 +1,183 @@
+---
+title: Navigation
+description: Configure sidebar navigation with groups, pages, and nested sections.
+---
+
+# Navigation
+
+The `navigation` array in `docs.json` defines the sidebar structure of your docs site. It controls what pages appear, in what order, and how they're grouped.
+
+## Basic Structure
+
+Navigation is an array of **groups**. Each group has a name and a list of pages:
+
+```json
+{
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["quickstart", "key-concepts"]
+    },
+    {
+      "group": "Guides",
+      "pages": ["guides/authentication", "guides/deployment"]
+    }
+  ]
+}
+```
+
+<Frame caption="Sidebar navigation rendered from the config above">
+  Screenshot needed: A docs sidebar showing two groups — "Getting Started" with
+  quickstart and key-concepts pages, and "Guides" with authentication and
+  deployment pages.
+</Frame>
+
+## Page References
+
+Pages are referenced by their file path relative to the repository root, without the `.mdx` extension:
+
+| File Path                   | Navigation Reference      |
+| --------------------------- | ------------------------- |
+| `quickstart.mdx`            | `"quickstart"`            |
+| `guides/authentication.mdx` | `"guides/authentication"` |
+| `api/endpoints/users.mdx`   | `"api/endpoints/users"`   |
+
+The page title displayed in the sidebar comes from the `title` field in the page's frontmatter. If a `sidebarTitle` is set, that's used instead.
+
+## Nested Groups
+
+Groups can be nested inside other groups to create multi-level navigation:
+
+```json
+{
+  "navigation": [
+    {
+      "group": "API Reference",
+      "pages": [
+        "api/overview",
+        {
+          "group": "Endpoints",
+          "pages": [
+            "api/endpoints/users",
+            "api/endpoints/projects",
+            "api/endpoints/deployments"
+          ]
+        },
+        {
+          "group": "Authentication",
+          "pages": ["api/auth/api-keys", "api/auth/oauth"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Nested groups render as collapsible sections in the sidebar. Readers can expand and collapse them to navigate complex documentation.
+
+<Frame caption="Nested navigation groups in the sidebar">
+  Screenshot needed: A sidebar showing "API Reference" as a top-level group,
+  with "Endpoints" and "Authentication" as collapsible sub-groups, each
+  containing their pages.
+</Frame>
+
+## Ordering
+
+Pages appear in the sidebar in the exact order they're listed in the `navigation` array. Baseflow does not auto-sort — you have full control over the order.
+
+<Callout type="tip">
+  Put your most important pages first. Readers tend to start from the top of the
+  sidebar, so lead with quickstarts and overviews.
+</Callout>
+
+## Page Types
+
+The `pages` array accepts three formats:
+
+### String (simple page)
+
+```json
+"quickstart"
+```
+
+References a file by path. The sidebar label comes from the file's frontmatter `title` (or `sidebarTitle`).
+
+### Object with path and title
+
+```json
+{ "path": "quickstart", "title": "Get Started" }
+```
+
+Overrides the sidebar label without changing the page's frontmatter.
+
+### Nested group
+
+```json
+{
+  "group": "Sub-Section",
+  "pages": ["page-a", "page-b"]
+}
+```
+
+Creates a collapsible subsection within the current group.
+
+## Complete Example
+
+```json
+{
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": ["quickstart", "key-concepts"]
+    },
+    {
+      "group": "Writing Content",
+      "pages": [
+        "writing-content/markdown-basics",
+        "writing-content/mdx",
+        "writing-content/frontmatter",
+        "writing-content/code-blocks",
+        "writing-content/images-and-media",
+        "writing-content/reusable-snippets"
+      ]
+    },
+    {
+      "group": "Components",
+      "pages": [
+        "components/overview",
+        "components/cards",
+        "components/tabs",
+        {
+          "group": "Advanced Components",
+          "pages": [
+            "components/accordion",
+            "components/steps",
+            "components/tooltips"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Keep groups focused">
+    Each group should cover one topic area. If a group has more than 8–10 pages,
+    consider splitting into sub-groups.
+  </Card>
+  <Card title="Lead with action">
+    Start with "Getting Started" or "Quickstart." Don't bury the entry point in
+    the middle of the sidebar.
+  </Card>
+  <Card title="Use descriptive group names">
+    "Writing Content" is better than "Content." "API Reference" is better than
+    "API."
+  </Card>
+  <Card title="Limit nesting depth">
+    Two levels of nesting (group → sub-group) is usually enough. Deeper nesting
+    makes navigation harder to scan.
+  </Card>
+</CardGroup>

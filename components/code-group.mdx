@@ -1,0 +1,195 @@
+---
+title: Code Group
+description: Display multiple code files in a single tabbed block with syntax highlighting.
+---
+
+# Code Group
+
+`CodeGroup` wraps multiple fenced code blocks into a single tabbed interface. Each code block becomes a tab, labeled by its filename.
+
+## Basic Usage
+
+````mdx
+<CodeGroup>
+```javascript index.js
+const app = require('express')();
+
+app.get('/', (req, res) => {
+res.send('Hello World');
+});
+
+app.listen(3000);
+
+````
+
+```python app.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello World'
+
+if __name__ == '__main__':
+    app.run(port=3000)
+````
+
+</CodeGroup>
+````
+
+<CodeGroup>
+```javascript index.js
+const app = require('express')();
+
+app.get('/', (req, res) => {
+res.send('Hello World');
+});
+
+app.listen(3000);
+
+````
+
+```python app.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return 'Hello World'
+
+if __name__ == '__main__':
+    app.run(port=3000)
+````
+
+</CodeGroup>
+
+## Tab Labels
+
+Each tab is labeled using the text after the language identifier in the code fence:
+
+````markdown
+```typescript utils.ts
+// Tab label: "utils.ts"
+```
+
+```bash Terminal
+// Tab label: "Terminal"
+```
+````
+
+If no label is provided, the language name is used as the tab label.
+
+## Props
+
+| Prop | Type | Description                                                                                 |
+| ---- | ---- | ------------------------------------------------------------------------------------------- |
+| —    | —    | `CodeGroup` has no additional props. It wraps fenced code blocks and turns each into a tab. |
+
+## Package Manager Toggle
+
+A common pattern is showing installation commands for different package managers:
+
+````mdx
+<CodeGroup>
+```bash npm
+npm install @baseflow/sdk
+```
+
+```bash yarn
+yarn add @baseflow/sdk
+```
+
+```bash pnpm
+pnpm add @baseflow/sdk
+```
+
+</CodeGroup>
+````
+
+<CodeGroup>
+```bash npm
+npm install @baseflow/sdk
+```
+
+```bash yarn
+yarn add @baseflow/sdk
+```
+
+```bash pnpm
+pnpm add @baseflow/sdk
+```
+
+</CodeGroup>
+
+## Multi-File Example
+
+Show a complete feature across multiple files:
+
+````mdx
+<CodeGroup>
+```typescript schema.ts
+import { z } from 'zod';
+
+export const UserSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+});
+```
+
+```typescript handler.ts
+import { UserSchema } from "./schema";
+
+export function createUser(data: unknown) {
+  const user = UserSchema.parse(data);
+  return db.users.create(user);
+}
+```
+
+```typescript route.ts
+import { createUser } from "./handler";
+
+app.post("/users", async (req, res) => {
+  const user = await createUser(req.body);
+  res.json(user);
+});
+```
+
+</CodeGroup>
+````
+
+<CodeGroup>
+```typescript schema.ts
+import { z } from 'zod';
+
+export const UserSchema = z.object({
+  name: z.string(),
+  email: z.string().email(),
+});
+```
+
+```typescript handler.ts
+import { UserSchema } from "./schema";
+
+export function createUser(data: unknown) {
+  const user = UserSchema.parse(data);
+  return db.users.create(user);
+}
+```
+
+```typescript route.ts
+import { createUser } from "./handler";
+
+app.post("/users", async (req, res) => {
+  const user = await createUser(req.body);
+  res.json(user);
+});
+```
+
+</CodeGroup>
+
+<Callout type="tip">
+  For content that mixes prose and code, use [Tabs](/components/tabs) instead.
+  `CodeGroup` is specifically designed for code-only tabbed blocks.
+</Callout>

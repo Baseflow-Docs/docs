@@ -1,0 +1,199 @@
+---
+title: API Reference Docs
+description: Create structured API reference documentation with parameter fields and response schemas.
+---
+
+# API Reference Docs
+
+Baseflow includes specialized components for documenting REST APIs — parameter tables, response fields, endpoint descriptions, and request/response examples.
+
+## ParamField
+
+Document a single API parameter with its name, type, and description:
+
+```mdx
+<ParamField name="project_id" type="string" required>
+  The unique identifier for the project. Found in your project settings.
+</ParamField>
+
+<ParamField name="page" type="integer" default="1">
+  Page number for paginated results. Starts at 1.
+</ParamField>
+
+<ParamField name="per_page" type="integer" default="25">
+  Number of items per page. Maximum 100.
+</ParamField>
+```
+
+<ParamField name="project_id" type="string" required>
+  The unique identifier for the project. Found in your project settings.
+</ParamField>
+
+<ParamField name="page" type="integer" default="1">
+  Page number for paginated results. Starts at 1.
+</ParamField>
+
+<ParamField name="per_page" type="integer" default="25">
+  Number of items per page. Maximum 100.
+</ParamField>
+
+### Props
+
+| Prop       | Type      | Description                                       |
+| ---------- | --------- | ------------------------------------------------- |
+| `name`     | `string`  | **Required.** Parameter name.                     |
+| `type`     | `string`  | Data type (e.g., `string`, `integer`, `boolean`). |
+| `required` | `boolean` | Whether the parameter is required.                |
+| `default`  | `string`  | Default value if the parameter is omitted.        |
+
+## ResponseField
+
+Document a field in the API response:
+
+```mdx
+<ResponseField name="id" type="string">
+  Unique identifier for the resource.
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  ISO 8601 timestamp of when the resource was created.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current status. One of: `active`, `archived`, `draft`.
+</ResponseField>
+```
+
+<ResponseField name="id" type="string">
+  Unique identifier for the resource.
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  ISO 8601 timestamp of when the resource was created.
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current status. One of: `active`, `archived`, `draft`.
+</ResponseField>
+
+### Props
+
+| Prop   | Type     | Description               |
+| ------ | -------- | ------------------------- |
+| `name` | `string` | **Required.** Field name. |
+| `type` | `string` | Data type of the field.   |
+
+## Expandable
+
+Use `Expandable` to show nested response fields:
+
+```mdx
+<ResponseField name="project" type="object">
+  The project object.
+</ResponseField>
+
+<Expandable title="project object">
+  <ResponseField name="project.id" type="string">
+    Unique project identifier.
+  </ResponseField>
+  <ResponseField name="project.name" type="string">
+    Display name of the project.
+  </ResponseField>
+  <ResponseField name="project.slug" type="string">
+    URL-friendly slug.
+  </ResponseField>
+</Expandable>
+```
+
+<ResponseField name="project" type="object">
+  The project object.
+</ResponseField>
+
+<Expandable title="project object">
+  <ResponseField name="project.id" type="string">
+    Unique project identifier.
+  </ResponseField>
+  <ResponseField name="project.name" type="string">
+    Display name of the project.
+  </ResponseField>
+  <ResponseField name="project.slug" type="string">
+    URL-friendly slug.
+  </ResponseField>
+</Expandable>
+
+## Full Endpoint Example
+
+Here's a complete API endpoint page:
+
+```mdx
+---
+title: List Projects
+description: Retrieve a list of all projects in your organization.
+---
+
+# List Projects
+
+`GET /api/v1/projects`
+
+Returns a paginated list of projects you have access to.
+
+## Parameters
+
+<ParamField name="page" type="integer" default="1">
+  Page number.
+</ParamField>
+
+<ParamField name="per_page" type="integer" default="25">
+  Items per page (max 100).
+</ParamField>
+
+<ParamField name="status" type="string">
+  Filter by status: `active`, `archived`, or `all`.
+</ParamField>
+
+## Response
+
+<ResponseField name="data" type="array">
+  Array of project objects.
+</ResponseField>
+
+<Expandable title="project object">
+  <ResponseField name="id" type="string">
+    Unique project ID.
+  </ResponseField>
+  <ResponseField name="name" type="string">
+    Project display name.
+  </ResponseField>
+  <ResponseField name="slug" type="string">
+    URL slug.
+  </ResponseField>
+  <ResponseField name="status" type="string">
+    Project status.
+  </ResponseField>
+</Expandable>
+
+<ResponseField name="total" type="integer">
+  Total number of projects.
+</ResponseField>
+
+<ResponseField name="page" type="integer">
+  Current page number.
+</ResponseField>
+```
+
+<Callout type="tip">
+  Organize API docs with one page per endpoint or resource. Use a navigation
+  group called "API Reference" with sub-groups for each resource type (Projects,
+  Users, Deployments, etc.).
+</Callout>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Versioning" icon="git-branch" href="/advanced/versioning">
+    Manage multiple versions of your documentation.
+  </Card>
+  <Card title="Components Overview" icon="puzzle" href="/components/overview">
+    See all available MDX components.
+  </Card>
+</CardGroup>

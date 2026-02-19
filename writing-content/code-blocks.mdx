@@ -1,0 +1,156 @@
+---
+title: Code Blocks
+description: Display syntax-highlighted code with titles, line numbers, and multi-file groups.
+---
+
+# Code Blocks
+
+Baseflow renders fenced code blocks with syntax highlighting out of the box. You can add titles, highlight specific lines, and group multiple files together.
+
+## Basic Code Block
+
+Wrap code in triple backticks and specify the language:
+
+````markdown
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+````
+
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+## Supported Languages
+
+Baseflow supports syntax highlighting for all major languages including:
+
+`javascript`, `typescript`, `python`, `ruby`, `go`, `rust`, `java`, `php`, `swift`, `kotlin`, `c`, `cpp`, `csharp`, `html`, `css`, `json`, `yaml`, `toml`, `bash`, `sql`, `graphql`, `mdx`, `markdown`, and many more.
+
+## Code Block Titles
+
+Add a title after the language identifier to label the file or snippet:
+
+````markdown
+```typescript src/index.ts
+import express from "express";
+
+const app = express();
+app.listen(3000);
+```
+````
+
+```typescript src/index.ts
+import express from "express";
+
+const app = express();
+app.listen(3000);
+```
+
+## Code Groups
+
+Use the `CodeGroup` component to display multiple related files in a tabbed view:
+
+````mdx
+<CodeGroup>
+```javascript server.js
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.end('Hello World');
+});
+server.listen(3000);
+```
+
+```python server.py
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Hello World')
+
+HTTPServer(('', 3000), Handler).serve_forever()
+```
+
+</CodeGroup>
+````
+
+<CodeGroup>
+```javascript server.js
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.end('Hello World');
+});
+server.listen(3000);
+```
+
+```python server.py
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Hello World')
+
+HTTPServer(('', 3000), Handler).serve_forever()
+```
+
+</CodeGroup>
+
+See [Code Group component](/components/code-group) for more details.
+
+## Inline Code
+
+Use single backticks for inline code within paragraphs:
+
+```markdown
+Run `npm install` to install dependencies, then start with `npm run dev`.
+```
+
+Run `npm install` to install dependencies, then start with `npm run dev`.
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Always specify the language">
+    Use `typescript` instead of bare triple backticks. This enables syntax
+    highlighting and improves readability.
+  </Card>
+  <Card title="Add file names">
+    When showing a specific file, add the filename after the language. Readers
+    can quickly identify which file to edit.
+  </Card>
+  <Card title="Use CodeGroup for alternatives">
+    When showing the same concept in multiple languages or package managers, use
+    `CodeGroup` instead of separate blocks.
+  </Card>
+  <Card title="Keep examples short">
+    Show only the relevant code. Trim imports and boilerplate when they don't
+    add value.
+  </Card>
+</CardGroup>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Images and Media"
+    icon="image"
+    href="/writing-content/images-and-media"
+  >
+    Add images, diagrams, and media assets to your docs.
+  </Card>
+  <Card
+    title="Code Group Component"
+    icon="layers"
+    href="/components/code-group"
+  >
+    Learn the full API for tabbed code blocks.
+  </Card>
+</CardGroup>

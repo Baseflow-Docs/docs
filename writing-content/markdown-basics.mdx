@@ -1,0 +1,141 @@
+---
+title: Markdown Basics
+description: Write documentation using standard Markdown syntax supported by Baseflow.
+---
+
+# Markdown Basics
+
+Baseflow supports standard Markdown (CommonMark) with a few additions. If you've written a GitHub README, you already know the fundamentals.
+
+## Headings
+
+Use `#` symbols to create headings. Baseflow uses headings to build the right-side table of contents automatically.
+
+```markdown
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+```
+
+<Callout type="tip">
+  Start each page with a single `# Heading 1`. Use `##` and `###` for sections
+  and subsections. The table of contents displays `##` and `###` headings by
+  default.
+</Callout>
+
+## Text Formatting
+
+```markdown
+**Bold text**
+_Italic text_
+**_Bold and italic_**
+~~Strikethrough~~
+`Inline code`
+```
+
+**Bold text**
+_Italic text_
+**_Bold and italic_**
+~~Strikethrough~~
+`Inline code`
+
+## Links
+
+```markdown
+[External link](https://example.com)
+[Internal link](/quickstart)
+[Link with title](https://example.com "Hover text")
+```
+
+Internal links use paths relative to your docs root. Link to `/quickstart` rather than the full URL.
+
+## Lists
+
+### Unordered
+
+```markdown
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+```
+
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+
+### Ordered
+
+```markdown
+1. First step
+2. Second step
+3. Third step
+```
+
+1. First step
+2. Second step
+3. Third step
+
+## Blockquotes
+
+```markdown
+> This is a blockquote. Use it for longer quotes or to
+> highlight a passage from another source.
+```
+
+> This is a blockquote. Use it for longer quotes or to highlight a passage from another source.
+
+<Callout type="info">
+  For styled callouts (tips, warnings, etc.), use the `Callout` component
+  instead of blockquotes. See [Callouts](/components/callouts).
+</Callout>
+
+## Tables
+
+```markdown
+| Feature       | Free | Pro |
+| ------------- | ---- | --- |
+| Projects      | 3    | ∞   |
+| Custom domain | —    | ✓   |
+| Git sync      | —    | ✓   |
+```
+
+| Feature       | Free | Pro |
+| ------------- | ---- | --- |
+| Projects      | 3    | ∞   |
+| Custom domain | —    | ✓   |
+| Git sync      | —    | ✓   |
+
+## Horizontal Rules
+
+```markdown
+---
+```
+
+Use `---` on its own line to insert a horizontal divider between sections.
+
+## Images
+
+```markdown
+![Alt text](/path/to/image.png)
+```
+
+Place images in your repository and reference them by path. See [Images and Media](/writing-content/images-and-media) for details on asset handling.
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="MDX" icon="code" href="/writing-content/mdx">
+    Extend Markdown with components using MDX.
+  </Card>
+  <Card title="Code Blocks" icon="terminal" href="/writing-content/code-blocks">
+    Syntax highlighting, line numbers, and more.
+  </Card>
+</CardGroup>

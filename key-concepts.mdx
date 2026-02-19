@@ -1,0 +1,128 @@
+---
+title: Key Concepts
+description: Core ideas behind Baseflow — projects, Git sync, MDX, and instant deploys.
+---
+
+# Key Concepts
+
+Before diving into the details, here's how the main pieces of Baseflow fit together.
+
+## Projects
+
+A **project** is a single documentation site. Each project has its own:
+
+- **GitHub repository** (or a specific branch within one)
+- **Navigation structure** defined in `docs.json`
+- **Subdomain** at `your-slug.baseflow.dev` (or a custom domain)
+- **Team members** with role-based access
+
+You can run multiple projects from one Baseflow account — for example, public-facing API docs, an internal knowledge base, and a product changelog.
+
+## Bi-Directional Git Sync
+
+Baseflow keeps your GitHub repository and the visual editor in perfect sync:
+
+- **Git → Baseflow**: Push a commit to your connected branch and the changes appear in the visual editor and on your live site within seconds.
+- **Baseflow → Git**: Edit a page in the visual editor and Baseflow commits the change back to your repository automatically.
+
+This means developers can keep using their preferred editor and Git workflow, while non-technical team members use the browser. Neither workflow blocks the other.
+
+<Frame caption="Bi-directional sync diagram">
+  Screenshot needed: A diagram showing the two-way flow between a GitHub
+  repository and the Baseflow visual editor, with arrows in both directions.
+</Frame>
+
+<Callout type="info">
+  Every edit made in the visual editor creates a real Git commit, so you always
+  have a full history of changes.
+</Callout>
+
+## MDX
+
+Baseflow uses **MDX** — Markdown extended with JSX components. This means you write standard Markdown for text content and drop in rich components where you need them.
+
+```mdx
+# Welcome
+
+Regular Markdown works as expected: **bold**, _italic_, [links](https://example.com).
+
+But you can also use components:
+
+<Callout type="tip">This is a tip rendered as a styled callout box.</Callout>
+
+<CardGroup cols={2}>
+  <Card title="First" icon="star">
+    Description here.
+  </Card>
+  <Card title="Second" icon="zap">
+    Another card.
+  </Card>
+</CardGroup>
+```
+
+You don't need to import components — they're available globally on every page.
+
+## Visual Editor
+
+The visual editor is a browser-based WYSIWYG interface for writing and editing documentation. It supports:
+
+- Rich text formatting (headings, bold, italic, lists, links)
+- Drag-and-drop page reordering in the sidebar
+- Component insertion via a slash command or toolbar
+- Real-time preview of exactly what the published page looks like
+
+<Frame caption="Visual editor interface">
+  Screenshot needed: The Baseflow visual editor showing a page being edited,
+  with the toolbar at the top and the sidebar navigation on the left.
+</Frame>
+
+The editor is designed for team members who don't work in code. Everything they do results in valid MDX committed back to the repository.
+
+## Instant Deploys
+
+There's no build step. When Baseflow detects a change — whether from a Git push or a visual editor save — the updated page goes live immediately. No CI pipeline, no waiting for builds, no manual publish button.
+
+<Steps>
+  <Step title="Change detected">
+    A commit lands on the connected branch, or a page is saved in the visual
+    editor.
+  </Step>
+  <Step title="Content processed">
+    Baseflow parses the MDX, resolves navigation, and stores the result.
+  </Step>
+  <Step title="Live in seconds">
+    The updated page is available at your docs URL. No cache to bust, no deploy
+    queue.
+  </Step>
+</Steps>
+
+## Docs Configuration
+
+Every project is configured through a single `docs.json` file at the root of your repository. This file controls:
+
+- **Site name and metadata**
+- **Navigation structure** (groups, pages, nesting)
+- **Logo and branding assets**
+- **Color theme** overrides
+- **Top navigation links** and social icons
+
+See [docs.json reference](/project-structure/docs-json) for the full schema.
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Writing Content"
+    icon="pencil"
+    href="/writing-content/markdown-basics"
+  >
+    Start writing with Markdown and MDX.
+  </Card>
+  <Card
+    title="Project Structure"
+    icon="folder"
+    href="/project-structure/docs-json"
+  >
+    Understand the docs.json configuration file.
+  </Card>
+</CardGroup>

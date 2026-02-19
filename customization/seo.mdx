@@ -1,0 +1,126 @@
+---
+title: SEO
+description: Optimize your Baseflow documentation for search engines.
+---
+
+# SEO
+
+Baseflow handles many SEO best practices automatically, but you can fine-tune how your pages appear in search results with frontmatter and configuration.
+
+## Automatic SEO
+
+Baseflow generates the following for every page without any configuration:
+
+- **Title tag** from the page's `title` frontmatter
+- **Meta description** from the page's `description` frontmatter
+- **Open Graph tags** for social sharing (title, description, site name)
+- **Canonical URL** based on the page's path
+- **Semantic HTML** with proper heading hierarchy
+- **Clean URLs** without file extensions (e.g., `/guides/quickstart` not `/guides/quickstart.mdx`)
+
+## Page-Level SEO
+
+The most important thing you can do for SEO is write good frontmatter on every page:
+
+```yaml
+---
+title: API Authentication Guide
+description: Learn how to authenticate API requests using bearer tokens, API keys, and OAuth 2.0 flows.
+---
+```
+
+### Title Best Practices
+
+| Practice                 | Example                                       |
+| ------------------------ | --------------------------------------------- |
+| Be specific              | "API Authentication Guide" ✓                  |
+| Avoid generic titles     | "Guide" ✗                                     |
+| Include primary keyword  | "Deploy to Production with Docker" ✓          |
+| Keep under 60 characters | Longer titles get truncated in search results |
+
+### Description Best Practices
+
+| Practice                        | Example                                                |
+| ------------------------------- | ------------------------------------------------------ |
+| Summarize the page              | "Step-by-step guide to deploy using Docker containers" |
+| Include relevant keywords       | Naturally, not stuffed                                 |
+| Keep between 120–160 characters | Shorter gets cut off, longer gets truncated            |
+| Make it actionable              | "Learn how to..." or "Set up..."                       |
+
+## Site Name
+
+The `name` field in `docs.json` is used in title tags and Open Graph metadata:
+
+```json docs.json
+{
+  "name": "Acme Docs"
+}
+```
+
+Search results typically show: **Page Title — Site Name**
+
+## Social Sharing
+
+When someone shares a link to your docs on Twitter, LinkedIn, Slack, or Discord, the Open Graph tags control what preview appears:
+
+<Frame caption="Social share preview card">
+  Screenshot needed: A social media share card showing the page title,
+  description, and site name from the Open Graph tags, as it would appear when
+  shared on Twitter or Slack.
+</Frame>
+
+The preview automatically uses:
+
+- **Title**: From the page's `title` frontmatter
+- **Description**: From the page's `description` frontmatter
+- **Site name**: From `docs.json` `name` field
+
+## Sitemap
+
+Baseflow automatically generates a sitemap for your documentation site. Search engines use this to discover and index all your pages.
+
+<Callout type="info">
+  The sitemap is generated automatically based on your navigation config. Every
+  page listed in `docs.json` is included.
+</Callout>
+
+## SEO Checklist
+
+Use this checklist for every new page:
+
+<Steps>
+  <Step title="Add title frontmatter">
+    Every page needs a unique, descriptive `title` under 60 characters.
+  </Step>
+  <Step title="Add description frontmatter">
+    Write a concise `description` (120–160 characters) summarizing the page
+    content.
+  </Step>
+  <Step title="Use proper heading hierarchy">
+    Start with one `# H1`, then use `##` and `###` for sections. Don't skip
+    levels.
+  </Step>
+  <Step title="Link between pages">
+    Internal links help search engines understand your site structure. Link
+    related pages to each other.
+  </Step>
+  <Step title="Use descriptive link text">
+    "See the [authentication guide](/guides/auth)" is better than "Click
+    [here](/guides/auth)."
+  </Step>
+</Steps>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Branding" icon="palette" href="/customization/branding">
+    Customize logos, site name, and visual identity.
+  </Card>
+  <Card
+    title="Custom Domains"
+    icon="globe"
+    href="/customization/custom-domains"
+  >
+    Connect your own domain for a professional URL.
+  </Card>
+</CardGroup>

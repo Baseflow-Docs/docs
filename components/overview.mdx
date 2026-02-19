@@ -1,0 +1,83 @@
+---
+title: Components Overview
+description: A complete reference of all MDX components available in Baseflow.
+---
+
+# Components Overview
+
+Baseflow includes a library of MDX components you can use on any page. No imports needed — just drop the component into your MDX and it renders automatically.
+
+## Component Catalog
+
+<CardGroup cols={2}>
+  <Card title="Cards" icon="layout" href="/components/cards">
+    Display content in card layouts — feature grids, link lists, and grouped
+    information.
+  </Card>
+  <Card title="Tabs" icon="columns" href="/components/tabs">
+    Organize content into tabbed views for language toggles, platform variants,
+    and more.
+  </Card>
+  <Card title="Code Group" icon="code" href="/components/code-group">
+    Show multiple code files in a single tabbed block with syntax highlighting.
+  </Card>
+  <Card title="Accordion" icon="chevron-down" href="/components/accordion">
+    Expandable sections for FAQs and supplementary details.
+  </Card>
+  <Card title="Callouts" icon="alert-circle" href="/components/callouts">
+    Highlighted messages for tips, warnings, info boxes, and error notices.
+  </Card>
+  <Card title="Steps" icon="list-ordered" href="/components/steps">
+    Numbered step-by-step instructions with titles and descriptions.
+  </Card>
+  <Card title="Tooltips" icon="message-circle" href="/components/tooltips">
+    Inline hover text for definitions and additional context.
+  </Card>
+  <Card title="Frames" icon="image" href="/components/frames">
+    Bordered containers for screenshots and media with optional captions.
+  </Card>
+</CardGroup>
+
+## Quick Reference
+
+| Component        | Purpose                                      | Example Use                                 |
+| ---------------- | -------------------------------------------- | ------------------------------------------- |
+| `Card`           | Content card with title, icon, optional link | Feature grid, quick-link list               |
+| `CardGroup`      | Grid layout for cards                        | Group 2–4 cards in columns                  |
+| `Tabs`           | Tabbed content switcher                      | Language or platform toggles                |
+| `Tab`            | Individual tab within Tabs                   | One panel of tabbed content                 |
+| `CodeGroup`      | Tabbed code blocks                           | Same example in multiple languages          |
+| `Accordion`      | Expandable section                           | FAQ answer, optional details                |
+| `AccordionGroup` | Group of accordions                          | FAQ page with multiple questions            |
+| `Callout`        | Styled alert box                             | Tips, warnings, important notices           |
+| `Note`           | Alias for `Callout type="info"`              | Informational note                          |
+| `Warning`        | Alias for `Callout type="warning"`           | Warning notice                              |
+| `Tip`            | Alias for `Callout type="tip"`               | Helpful tip                                 |
+| `Check`          | Alias for `Callout type="check"`             | Success / confirmation                      |
+| `Danger`         | Alias for `Callout type="danger"`            | Danger / error alert                        |
+| `Steps`          | Ordered step container                       | Tutorial walkthrough                        |
+| `Step`           | Individual step                              | One step in a process                       |
+| `Frame`          | Bordered image/media container               | Screenshots with captions                   |
+| `Tooltip`        | Inline hover text                            | Term definitions                            |
+| `Icon`           | Inline icon                                  | Visual accent in text                       |
+| `Badge`          | Small label                                  | Version number, status indicator            |
+| `ParamField`     | API parameter documentation                  | Request parameter with type and description |
+| `ResponseField`  | API response field                           | Response property with type and description |
+| `Expandable`     | Expandable content block                     | Nested response fields                      |
+
+## Using Components
+
+All components follow the same pattern:
+
+```mdx
+<ComponentName prop="value">
+  Content goes here. **Markdown** works inside most components.
+</ComponentName>
+```
+
+Components are globally available — no imports required. Just use them directly in your MDX files.
+
+<Callout type="tip">
+  Browse the individual component pages for detailed props, examples, and best
+  practices.
+</Callout>

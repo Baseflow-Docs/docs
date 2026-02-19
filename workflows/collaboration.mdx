@@ -1,0 +1,119 @@
+---
+title: Collaboration
+description: Set up teams, roles, and workflows for collaborative documentation.
+---
+
+# Collaboration
+
+Baseflow is designed for teams where multiple people contribute to documentation — developers, product managers, support engineers, and technical writers. Here's how to set up collaborative workflows.
+
+## Team Roles
+
+Baseflow supports role-based access so each team member has the right level of control:
+
+| Role   | Can View | Can Edit | Can Configure | Can Manage Members |
+| ------ | -------- | -------- | ------------- | ------------------ |
+| Viewer | ✓        | —        | —             | —                  |
+| Editor | ✓        | ✓        | —             | —                  |
+| Admin  | ✓        | ✓        | ✓             | ✓                  |
+| Owner  | ✓        | ✓        | ✓             | ✓                  |
+
+<Frame caption="Team management settings">
+  Screenshot needed: The project settings team management page showing a list of
+  team members with their roles and invite/remove controls.
+</Frame>
+
+## Inviting Team Members
+
+<Steps>
+  <Step title="Open project settings">
+    Go to your project in the dashboard and navigate to **Settings → Team**.
+  </Step>
+  <Step title="Invite by email">
+    Enter the email address of the team member you want to invite and select
+    their role.
+  </Step>
+  <Step title="They accept the invite">
+    The invited team member receives an email with a link to join the project.
+    Once accepted, they can access the project based on their role.
+  </Step>
+</Steps>
+
+## Workflow by Role
+
+Different team members use Baseflow differently. Here's which workflow fits each role:
+
+<CardGroup cols={3}>
+  <Card title="Developers" icon="code">
+    **Workflow:** Git
+
+    Write MDX in their code editor, commit to branches, open pull requests. Review documentation changes alongside code changes.
+
+  </Card>
+  <Card title="Product Managers" icon="pen-tool">
+    **Workflow:** Visual Editor
+
+    Edit pages directly in the browser. Create and reorganize content without touching Git. Publish instantly or submit for review.
+
+  </Card>
+  <Card title="Support Engineers" icon="headphones">
+    **Workflow:** Visual Editor
+
+    Quickly update help articles, troubleshooting guides, and FAQ pages based on support ticket patterns. No engineering bottleneck.
+
+  </Card>
+</CardGroup>
+
+## Working Together
+
+### Avoiding conflicts
+
+Baseflow handles concurrent editing gracefully:
+
+- **Git + Git:** Standard Git merge rules apply. If two people edit different files, both changes merge cleanly. If they edit the same file, Git handles the merge (or flags a conflict).
+- **Git + Visual Editor:** Changes sync in both directions. The visual editor always reflects the latest state of the Git repository.
+- **Visual Editor + Visual Editor:** Saves are committed sequentially. The latest save wins for each page.
+
+<Callout type="tip">
+  For large teams, establish page ownership. When one person owns a page,
+  conflicts are rare because only one person typically edits a page at a time.
+</Callout>
+
+### Communication patterns
+
+| Pattern                      | How                                            |
+| ---------------------------- | ---------------------------------------------- |
+| Request a content review     | Open a pull request with documentation changes |
+| Assign page ownership        | Note in team docs or use GitHub CODEOWNERS     |
+| Track documentation tasks    | Create GitHub issues labeled "docs"            |
+| Notify team of major changes | Use PR descriptions and commit messages        |
+
+## GitHub CODEOWNERS
+
+For teams using the Git workflow, add a `CODEOWNERS` file to require reviews from specific people when documentation changes:
+
+```text CODEOWNERS
+# Require docs team review for all documentation changes
+*.mdx @yourorg/docs-team
+docs.json @yourorg/docs-team
+
+# Require API team review for API documentation
+api/ @yourorg/api-team
+```
+
+This ensures the right people review changes to their areas of ownership.
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card title="Visual Editor" icon="edit" href="/workflows/visual-editor">
+    Learn how non-technical team members can edit docs in the browser.
+  </Card>
+  <Card
+    title="Review and Publish"
+    icon="check-circle"
+    href="/workflows/review-and-publish"
+  >
+    Set up gated review workflows before publishing.
+  </Card>
+</CardGroup>

@@ -1,0 +1,128 @@
+---
+title: Visual Editor
+description: Edit documentation in the browser with a WYSIWYG editor — no Git required.
+---
+
+# Visual Editor
+
+The visual editor lets non-technical team members write, edit, and publish documentation directly in the browser. Every change made in the editor is synced back to your Git repository automatically.
+
+## Overview
+
+<Frame caption="The Baseflow visual editor">
+  Screenshot needed: Full-screen view of the visual editor showing the editing
+  area in the center, formatting toolbar at the top, and sidebar navigation on
+  the left.
+</Frame>
+
+The visual editor provides:
+
+- **Rich text editing** — headings, bold, italic, lists, links, and more
+- **Component insertion** — add cards, callouts, tabs, and other components via slash commands
+- **Live preview** — see exactly how the page will look when published
+- **Drag-and-drop** — reorder pages in the sidebar by dragging them
+- **Instant publishing** — changes go live the moment you save
+
+## Getting Started
+
+<Steps>
+  <Step title="Open the editor">
+    Navigate to your project in the Baseflow dashboard and click **Edit** on any page, or click **Visual Editor** in the project navigation.
+  </Step>
+  <Step title="Edit content">
+    Click anywhere on the page to start typing. Use the toolbar for formatting or type `/` to insert a component.
+
+    <Frame caption="Slash command menu for inserting components">
+      Screenshot needed: The slash command dropdown showing available components — Callout, Card Group, Tabs, Code Block, Steps, etc.
+    </Frame>
+
+  </Step>
+  <Step title="Save and publish">
+    Click **Save** to publish your changes. The updated page goes live instantly, and Baseflow commits the change to your Git repository.
+  </Step>
+</Steps>
+
+## Formatting
+
+The toolbar provides quick access to common formatting options:
+
+| Action        | Toolbar Button | Markdown Equivalent |
+| ------------- | -------------- | ------------------- |
+| Bold          | **B**          | `**text**`          |
+| Italic        | _I_            | `_text_`            |
+| Heading 2     | H2             | `## Heading`        |
+| Heading 3     | H3             | `### Heading`       |
+| Bullet list   | •              | `- item`            |
+| Numbered list | 1.             | `1. item`           |
+| Link          | 🔗             | `[text](url)`       |
+| Code          | `<>`           | `` `code` ``        |
+
+## Inserting Components
+
+Type `/` on a new line to open the component menu. Select a component to insert it:
+
+- **Callout** — tip, warning, info, or danger box
+- **Card Group** — grid of cards
+- **Tabs** — tabbed content
+- **Code Block** — syntax-highlighted code
+- **Steps** — numbered step-by-step guide
+- **Accordion** — expandable section
+- **Image** — upload or reference an image
+
+<Frame caption="Editing a callout in the visual editor">
+  Screenshot needed: The visual editor showing a callout component being edited,
+  with the type selector (info/tip/warning) and rich text content inside.
+</Frame>
+
+## Page Management
+
+### Creating pages
+
+Click **New Page** in the sidebar to create a new documentation page. Choose where it should appear in the navigation.
+
+### Reordering pages
+
+Drag and drop pages in the sidebar to reorder them. The navigation in `docs.json` is updated automatically.
+
+### Deleting pages
+
+Right-click a page in the sidebar and select **Delete**. The file is removed from the Git repository.
+
+<Callout type="warning">
+  Deleting a page in the visual editor permanently removes it from your Git
+  repository. This is like deleting a file and committing the change.
+</Callout>
+
+## Git Sync
+
+Every action in the visual editor creates a real Git commit:
+
+| Action             | Git Result                                      |
+| ------------------ | ----------------------------------------------- |
+| Edit page content  | Commit updating the MDX file                    |
+| Create new page    | Commit adding a new MDX file + docs.json update |
+| Delete page        | Commit removing the file + docs.json update     |
+| Reorder navigation | Commit updating docs.json                       |
+
+This means your Git history is always complete — even if every edit was made in the browser.
+
+<Callout type="info">
+  Developers working in Git and editors working in the browser never conflict.
+  Both workflows produce the same MDX files, and Baseflow keeps everything in
+  sync.
+</Callout>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Review and Publish"
+    icon="check-circle"
+    href="/workflows/review-and-publish"
+  >
+    Learn about review workflows for team documentation.
+  </Card>
+  <Card title="Git Workflow" icon="git-branch" href="/workflows/git-workflow">
+    Use Git branches and pull requests for docs.
+  </Card>
+</CardGroup>

@@ -1,0 +1,146 @@
+---
+title: Steps
+description: Numbered step-by-step instructions with titles and descriptions.
+---
+
+# Steps
+
+The `Steps` component renders numbered, sequential instructions. Use it for tutorials, setup guides, and any process that has a clear order.
+
+## Basic Usage
+
+```mdx
+<Steps>
+  <Step title="Create a project">
+    Go to the dashboard and click **New Project**. Enter a name and slug.
+  </Step>
+  <Step title="Connect GitHub">
+    Install the Baseflow GitHub App and select your repository.
+  </Step>
+  <Step title="Add content">
+    Create a `docs.json` config and your first MDX page. Push to your connected
+    branch.
+  </Step>
+  <Step title="Go live">
+    Your docs site is live at `your-slug.baseflow.dev`. No build step needed.
+  </Step>
+</Steps>
+```
+
+<Steps>
+  <Step title="Create a project">
+    Go to the dashboard and click **New Project**. Enter a name and slug.
+  </Step>
+  <Step title="Connect GitHub">
+    Install the Baseflow GitHub App and select your repository.
+  </Step>
+  <Step title="Add content">
+    Create a `docs.json` config and your first MDX page. Push to your connected
+    branch.
+  </Step>
+  <Step title="Go live">
+    Your docs site is live at `your-slug.baseflow.dev`. No build step needed.
+  </Step>
+</Steps>
+
+## Props
+
+### Steps
+
+| Prop | Type | Description                                                 |
+| ---- | ---- | ----------------------------------------------------------- |
+| —    | —    | Container for `Step` components. Renders the numbered list. |
+
+### Step
+
+| Prop    | Type     | Description                         |
+| ------- | -------- | ----------------------------------- |
+| `title` | `string` | **Required.** Heading for the step. |
+
+## Rich Content
+
+Steps can contain any Markdown or MDX content — code blocks, callouts, images, and nested components:
+
+````mdx
+<Steps>
+  <Step title="Install dependencies">
+    ```bash
+    npm install @baseflow/sdk
+    ```
+  </Step>
+  <Step title="Configure the SDK">
+    Create a config file at the project root:
+
+    ```typescript config.ts
+    export default {
+      projectId: 'your-project-id',
+      apiKey: process.env.BASEFLOW_API_KEY,
+    };
+    ```
+
+    <Callout type="warning">
+      Never commit your API key. Use environment variables.
+    </Callout>
+
+  </Step>
+  <Step title="Initialize">
+    Call `init()` in your application entry point:
+
+    ```typescript
+    import config from './config';
+    import { init } from '@baseflow/sdk';
+
+    init(config);
+    ```
+
+  </Step>
+</Steps>
+````
+
+<Steps>
+  <Step title="Install dependencies">
+    ```bash
+    npm install @baseflow/sdk
+    ```
+  </Step>
+  <Step title="Configure the SDK">
+    Create a config file at the project root:
+
+    ```typescript config.ts
+    export default {
+      projectId: 'your-project-id',
+      apiKey: process.env.BASEFLOW_API_KEY,
+    };
+    ```
+
+    <Callout type="warning">
+      Never commit your API key. Use environment variables.
+    </Callout>
+
+  </Step>
+  <Step title="Initialize">
+    Call `init()` in your application entry point:
+
+    ```typescript
+    import config from './config';
+    import { init } from '@baseflow/sdk';
+
+    init(config);
+    ```
+
+  </Step>
+</Steps>
+
+## When to Use Steps
+
+| Scenario                    | Component               |
+| --------------------------- | ----------------------- |
+| Sequential instructions     | `Steps`                 |
+| Unordered feature list      | `CardGroup` with `Card` |
+| FAQ with expandable answers | `AccordionGroup`        |
+| Simple bullet list          | Markdown list           |
+
+<Callout type="tip">
+  Keep step titles short and action-oriented: "Install dependencies" is better
+  than "The first thing you need to do is install the required dependencies."
+</Callout>

@@ -1,0 +1,99 @@
+{
+  "name": "Baseflow",
+  "theme": "default",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/logo/favicon.svg",
+  "colors": {
+    "primary": "#22C55E",
+    "light": "#BBF7D0",
+    "dark": "#0D1B2A"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": ["index", "quickstart", "key-concepts"]
+          },
+          {
+            "group": "Writing Content",
+            "pages": [
+              "writing-content/markdown-basics",
+              "writing-content/mdx",
+              "writing-content/frontmatter",
+              "writing-content/code-blocks",
+              "writing-content/images-and-media",
+              "writing-content/reusable-snippets"
+            ]
+          },
+          {
+            "group": "Components",
+            "pages": [
+              "components/overview",
+              "components/cards",
+              "components/tabs",
+              "components/code-group",
+              "components/accordion",
+              "components/callouts",
+              "components/steps",
+              "components/tooltips",
+              "components/frames"
+            ]
+          },
+          {
+            "group": "Project Structure",
+            "pages": [
+              "project-structure/docs-json",
+              "project-structure/navigation",
+              "project-structure/file-organization"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/branding",
+              "customization/colors-and-themes",
+              "customization/custom-domains",
+              "customization/seo"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "workflows/git-workflow",
+              "workflows/visual-editor",
+              "workflows/review-and-publish",
+              "workflows/collaboration"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "advanced/api-reference-docs",
+              "advanced/versioning",
+              "advanced/analytics",
+              "advanced/ai-features"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      { "label": "Dashboard", "href": "https://app.usebaseflow.com" },
+      { "label": "Website", "href": "https://usebaseflow.com" }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/n23daniel/baseflow",
+      "linkedin": "https://linkedin.com/company/baseflow"
+    }
+  }
+}

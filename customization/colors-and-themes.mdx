@@ -1,0 +1,102 @@
+---
+title: Colors and Themes
+description: Customize your docs site's color scheme and switch between light and dark modes.
+---
+
+# Colors and Themes
+
+Baseflow supports light and dark modes out of the box. You can customize the primary accent color to match your brand, and readers can toggle between themes.
+
+## Theme Colors
+
+Set your brand colors in `docs.json`:
+
+```json docs.json
+{
+  "colors": {
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
+  }
+}
+```
+
+| Field     | Description                                                      |
+| --------- | ---------------------------------------------------------------- |
+| `primary` | Main accent color — used for links, buttons, and active states.  |
+| `light`   | Lighter variant used in light mode for hover states and accents. |
+| `dark`    | Darker variant used in dark mode for the same elements.          |
+
+<Frame caption="Color customization applied to the docs site">
+  Screenshot needed: A side-by-side comparison showing a docs page in light mode
+  and dark mode, with the custom primary color visible in links and navigation
+  highlights.
+</Frame>
+
+## Light and Dark Mode
+
+Baseflow includes both light and dark themes by default. Readers can switch between them using the theme toggle in the header.
+
+- **Light mode**: Clean white background with dark text
+- **Dark mode**: Dark background with light text, using your `dark` color variant for accents
+
+The theme toggle respects the reader's system preference by default, and remembers their manual choice.
+
+<Frame caption="Theme toggle in the header">
+  Screenshot needed: The docs site header showing the sun/moon theme toggle
+  button.
+</Frame>
+
+## Choosing Good Colors
+
+<CardGroup cols={2}>
+  <Card title="Contrast matters">
+    Make sure your primary color has enough contrast against both light and dark
+    backgrounds. Test links and buttons in both themes.
+  </Card>
+  <Card title="Stay on-brand">
+    Use your product's primary brand color. Documentation should feel like part
+    of your product, not a separate site.
+  </Card>
+  <Card title="Avoid pure colors">
+    Pure red (#FF0000) or pure blue (#0000FF) can feel harsh. Slightly muted
+    tones like #EF4444 or #3B82F6 look better in documentation.
+  </Card>
+  <Card title="Test with real content">
+    Preview your color choices with actual documentation content, not just the
+    empty template. Code blocks, callouts, and cards all use the accent color.
+  </Card>
+</CardGroup>
+
+## Color Examples
+
+Here are some popular color combinations:
+
+| Brand Style | Primary   | Light     | Dark      |
+| ----------- | --------- | --------- | --------- |
+| Indigo      | `#6366F1` | `#818CF8` | `#4F46E5` |
+| Blue        | `#3B82F6` | `#60A5FA` | `#2563EB` |
+| Emerald     | `#10B981` | `#34D399` | `#059669` |
+| Orange      | `#F97316` | `#FB923C` | `#EA580C` |
+| Rose        | `#F43F5E` | `#FB7185` | `#E11D48` |
+| Violet      | `#8B5CF6` | `#A78BFA` | `#7C3AED` |
+
+<Callout type="tip">
+  When in doubt, start with your product's primary button color. That's usually
+  the best choice for your documentation's accent color too.
+</Callout>
+
+## What's Next
+
+<CardGroup cols={2}>
+  <Card
+    title="Custom Domains"
+    icon="globe"
+    href="/customization/custom-domains"
+  >
+    Connect your own domain to your docs site.
+  </Card>
+  <Card title="SEO" icon="search" href="/customization/seo">
+    Optimize your documentation for search engines.
+  </Card>
+</CardGroup>
